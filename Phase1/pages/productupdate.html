@@ -28,11 +28,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="">Home </a>
+                <a class="nav-item nav-link active" href="home.html">Home </a>
                 <a class="nav-item nav-link active" href="product?method=showProductList&type=WearableTechnology">Loans</a>
                 <a class="nav-item nav-link active" href="product?method=showProductList&type=WearableTechnology">Insurances</a>
                 <a class="nav-item nav-link active" href="product?method=showProductList&type=WearableTechnology">Investments</a>
-                <a class="nav-item nav-link active" href="product?method=showProductList&type=WearableTechnology">Near-Me</a>
              </div>
         </div>
     </div>
@@ -86,19 +85,59 @@
 </style>
 
 <div id="body">
-    <section id="content">
-        <article>
-            <p>
-            <div class="container"><center>
-                <img class="img-fluid" width="80%"src="static/imagesNew/banner.jpg" alt="Buildings" /></center>
+    <section id='content'>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="container">
+                    <form class="form-signin" method="post" action="order?method=toOrderdetailPage">
+                        <center><h2 class="form-signin-heading">View Product</h2></center>
+                        <label for="productid" class="sr-only">Product ID</label>
+                        <input name="productid" type="text" id="productid" class="form-control" placeholder="Product ID" required="" autofocus="">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">View</button>
+                    </form>
+                </div>
             </div>
-            <h3><center>BestFinance, an easy and 24 x 7 available loans store.</center></h3>
-            <br><br>
-            </p>
-        </article>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row"><div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="container text-center">
+                <form class="form-signin" method="post" action="/AS3/UpdateProduct?UpdateProduct=true">
+                    <center><h2 class="form-signin-heading">Update Product</h2></center>
+                    <label for="productId" class="sr-only">Product Id</label>
+                    <input type="hidden" name="productId" value="51">
+                    <input name="" value="51" disabled="" type="text" id="productId" class="form-control" placeholder="productId" required="" autofocus="">
+                    <label for="model" class="sr-only">Model Name</label>
+                    <input name="model" value="upgrade" type="text" id="model" class="form-control" placeholder="Model Name" required="">
+                    <label for="price" class="sr-only">Price</label>
+                    <input name="price" value="59.99" type="text" id="price" class="form-control" placeholder="Price" required="">
+                    <label for="img" class="sr-only">Image</label>Image:&nbsp; 
+                    <input name="img" value="imagesNew/51.jpg" type="text" id="mno" class="form-control" required="">
+                     <label for="discount" class="sr-only">Loan amount</label>
+                    <input name="discount" value="$1,000-$50,000" type="text" id="discount" class="form-control" placeholder="Discount" required="">
+                    <label for="quantity" class="sr-only">Quantity</label><input name="quantity" value="10" type="text" id="quantity" class="form-control" placeholder="Quantity" required="">
+                    <div class="form-group">
+                        <label for="role" class="sr-only">Role</label>
+                        <div class="col-xs-5 selectContainer">
+                            <select class="form-control" name="type" id="type">
+                                <option value="">Choose a type</option>
+                                <option value="WearableTechnology">Loans</option>
+                                <option value="Phones">Insurances</option>
+                                <option value="Laptops">Investments</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-lg btn-outline-dark" type="submit">Update Product</button>
+                    <a class="btn btn-lg btn-outline-dark" role="button" href="/AS3/UpdateProduct?DeleteProduct=51">Delete Product</a>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
     </section>
-</div>
 
+</div>
 <style>
     .sidebar h4 {
         padding-bottom: 0;
@@ -146,7 +185,7 @@
         <li>
             <h4>Loans</h4>
             <ul>
-                <li><a href="productlist.html">Personal Loans</a></li>
+                <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=FitnessWatches">Personal Loans</a></li>
                 <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=SmartWatches">Bussiness Loans</a></li>
                 <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=SmartWatches">Student Loans</a></li>
             </ul>
@@ -162,7 +201,7 @@
             <h4>Investments</h4>
             <ul>
                 <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=FitnessWatches">Stocks</a></li>
-                <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=SmartWatches">Cryptocurrency</a></li>
+                <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=SmartWatches">cryptocurrency services</a></li>
             </ul>
         </li>
 </aside>

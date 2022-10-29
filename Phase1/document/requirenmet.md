@@ -24,3 +24,28 @@ MySQL
 MongoDB
 ## Architecture
 ![image](/architecture.png)
+## Data source
+__user__
+ - id
+ - email
+ - phone
+ - password
+ - role
+ - creditcard
+  
+__transaction__
+ - orderid
+ - productid
+ - userid
+ - creditcard
+  
+__product__
+- productid
+- name
+- type(loan,insurence,investment)
+- rating
+- price
+- image
+
+__review__
+mongodb

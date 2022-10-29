@@ -28,11 +28,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="">Home </a>
+                <a class="nav-item nav-link active" href="home.html">Home </a>
                 <a class="nav-item nav-link active" href="product?method=showProductList&type=WearableTechnology">Loans</a>
                 <a class="nav-item nav-link active" href="product?method=showProductList&type=WearableTechnology">Insurances</a>
                 <a class="nav-item nav-link active" href="product?method=showProductList&type=WearableTechnology">Investments</a>
-                <a class="nav-item nav-link active" href="product?method=showProductList&type=WearableTechnology">Near-Me</a>
              </div>
         </div>
     </div>
@@ -87,18 +86,40 @@
 
 <div id="body">
     <section id="content">
-        <article>
-            <p>
-            <div class="container"><center>
-                <img class="img-fluid" width="80%"src="static/imagesNew/banner.jpg" alt="Buildings" /></center>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="container text-center">
+                    <form class="form-signin" method="post" action="product?method=addProduct">
+                        <center><h2 class="form-signin-heading">Add Product</h2></center>
+                        <label for="productId" class="sr-only">Product Id</label>
+                        <input name="productId" type="text" id="productId" class="form-control" placeholder="productId" required="" autofocus="">
+                        <label for="model" class="sr-only">Product Name</label>
+                        <input name="model" type="text" id="model" class="form-control" placeholder="Product Name" required="">
+                        <label for="price" class="sr-only">Price</label>
+                        <input name="price" type="text" id="price" class="form-control" placeholder="Price" required="">
+                        <label for="img" class="sr-only">Image</label>Image:&nbsp;
+                        <input name="img" type="file" id="mno" class="form-control" required="">
+                        <div class="form-group">
+                            <label for="role" class="sr-only">Role</label>
+                            <div class="col-xs-5 selectContainer">
+                                <select class="form-control" name="type" id="type">
+                                    <option value="">Choose a type</option>
+                                    <option value="WearableTechnology">Loans</option>
+                                    <option value="Phones">Insurances</option>
+                                    <option value="Laptops">Investments</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-outline-dark" type="submit">Add Product</button>
+                    </form>
+                </div>
             </div>
-            <h3><center>BestFinance, an easy and 24 x 7 available loans store.</center></h3>
-            <br><br>
-            </p>
-        </article>
+            <div class="col-md-3"></div>
+        </div>
     </section>
-</div>
 
+</div>
 <style>
     .sidebar h4 {
         padding-bottom: 0;
@@ -146,7 +167,7 @@
         <li>
             <h4>Loans</h4>
             <ul>
-                <li><a href="productlist.html">Personal Loans</a></li>
+                <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=FitnessWatches">Personal Loans</a></li>
                 <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=SmartWatches">Bussiness Loans</a></li>
                 <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=SmartWatches">Student Loans</a></li>
             </ul>
@@ -162,7 +183,7 @@
             <h4>Investments</h4>
             <ul>
                 <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=FitnessWatches">Stocks</a></li>
-                <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=SmartWatches">Cryptocurrency</a></li>
+                <li><a href="product?method=showProductList&type=WearableTechnology&&manufacturer=SmartWatches">cryptocurrency services</a></li>
             </ul>
         </li>
 </aside>
