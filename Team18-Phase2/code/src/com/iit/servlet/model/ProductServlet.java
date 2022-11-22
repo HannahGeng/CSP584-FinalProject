@@ -41,13 +41,10 @@ public class ProductServlet extends ModelBaseServlet {
         int productID = Integer.parseInt(request.getParameter("id"));
         try {
             Product product = productService.filterById(productID);
-            List<Product> accessories = productService.findAccessoryByProductID(productID);
-            request.setAttribute("accessories",accessories);
             request.setAttribute("product",product);
             mdsu = new MongoDBDataStoreUtilities();
             HashMap<String, ArrayList<Review>> reviews = mdsu.readReview(productID);
             ArrayList<Review> review = reviews.get(request.getParameter("id"));
-            System.out.println(review.toString());
             request.setAttribute("review",review);
         } catch (Exception e) {
             e.printStackTrace();

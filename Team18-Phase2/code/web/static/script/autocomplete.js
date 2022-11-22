@@ -6,7 +6,7 @@ function init() {
 }
 
 function doCompletion() {
-	var url = "Autocomplete?action=complete&searchId=" + escape(searchId.value);
+	var url = "search?method=autoSearch&action=complete&searchId=" + escape(searchId.value);
 	console.log(searchId.value);
 	req = initRequest();
 	req.open("GET", url, true);
@@ -46,11 +46,12 @@ function appendProduct(productName, productId) {
 	cell.className = "popupCell";
 	linkElement = document.createElement("a");
 	linkElement.className = "popupItem";
-	linkElement.setAttribute("href", "/AS3/ViewProductServlet?productId="
+	linkElement.setAttribute("href", "/bestfinance/product?method=toViewProductPage&id="
 			+ productId);
 	linkElement.appendChild(document.createTextNode(productName));
 	cell.appendChild(linkElement);
 }
+
 function parseMessages(responseXML) {
 	
 	if (responseXML == null) {

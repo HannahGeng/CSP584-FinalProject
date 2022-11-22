@@ -31,6 +31,14 @@
         <servlet-name>ReviewServlet</servlet-name>
         <servlet-class>com.iit.servlet.model.ReviewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AutocompleteServlet</servlet-name>
+        <servlet-class>com.iit.servlet.model.AutocompleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AutocompleteServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReviewServlet</servlet-name>
         <url-pattern>/review</url-pattern>
