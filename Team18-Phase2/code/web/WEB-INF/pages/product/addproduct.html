@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>spigot - Free CSS Template by ZyPOP</title>
+    <base th:href="@{/}" href="/AS2/"/>
+    <link rel="stylesheet" href="static/css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/mystyle.css" type="text/css" />
+</head>
+
+<body>
+<!-- Image and text -->
+<div id="header" th:include="header :: header"></div>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+<div id="body">
+    <section id="content">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="container text-center">
+                    <form class="form-signin" method="post" action="product?method=addProduct">
+                        <center><h2 class="form-signin-heading">Add Product</h2></center>
+                        <label for="productId" class="sr-only">Product Id</label>
+                        <input name="productId" type="text" id="productId" class="form-control" placeholder="productId" required="" autofocus="">
+                        <label for="model" class="sr-only">Model Name</label>
+                        <input name="model" type="text" id="model" class="form-control" placeholder="Model Name" required="">
+                        <label for="price" class="sr-only">Price</label>
+                        <input name="price" type="text" id="price" class="form-control" placeholder="Price" required="">
+                        <label for="img" class="sr-only">Image</label>Image:&nbsp;
+                        <input name="img" type="file" id="mno" class="form-control" required="">
+                        <label for="manufacturer" class="sr-only">Manufacturer</label>
+                        <input name="manufacturer" type="text" id="manufacturer" class="form-control" placeholder="Manufactured By" required="">
+                        <label for="condition" class="sr-only">Condition</label>
+                        <input name="condition" type="text" id="condition" class="form-control" placeholder="Condition" required="">
+                        <label for="discount" class="sr-only">Discount</label>
+                        <input name="discount" type="text" id="discount" class="form-control" placeholder="Discount" required="">
+                        <label for="quantity" class="sr-only">Quantity</label>
+                        <input name="quantity" type="text" id="quantity" class="form-control" placeholder="Quantity" required="">
+                        <div class="form-group">
+                            <label for="role" class="sr-only">Role</label>
+                            <div class="col-xs-5 selectContainer">
+                                <select class="form-control" name="type" id="type">
+                                    <option value="">Choose a type</option>
+                                    <option value="WearableTechnology">Wearable Technology</option>
+                                    <option value="Phones">Phones</option>
+                                    <option value="Laptops">Laptops</option>
+                                    <option value="VoiceAssistant">Voice Assistant</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-outline-dark" type="submit">Add Product</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </section>
+
+    <style>
+        .sidebar h4 {
+            padding-bottom: 0;
+            font-size: 18px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 7px 7px;
+            /*background-color: #343a40 !important;*/
+            background-color: darkblue !important;
+            text-align: center;
+            border-radius: 15px;
+        }
+        a {
+            color: #212529;
+            background-color: transparent;
+        }
+        .sidebar ul {
+            width: 250px;
+        }
+        .sidebar li ul li a:active {
+            background-color: #007bff;
+            border-radius: 20px;
+        }
+        .sidebar li ul li a:hover {
+            background-color: lightblue;
+            border-radius: 20px;
+        }
+    </style>
+
+    <div id="left" th:include="left :: left"></div>
+
+    <div id="footer" th:include="footer :: footer"></div>
+
+    <script src="static/script/jquery.min.js"></script>
+    <script src="static/script/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        $('.carousel').carousel();
+        $("select#delivery").change(function(){
+            if ($(this).val() === '1') {
+                $("#picklocation").prop("hidden","")
+            } else {
+                $("#picklocation").attr("hidden","hidden")
+            }
+        });
+
+    </script>
+</div>
+</body>
+
+</html>
