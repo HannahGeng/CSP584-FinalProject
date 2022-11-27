@@ -11,7 +11,7 @@ public class Cart {
         if (cartItemMap.containsKey(product.getProductid())) {
             itemCountIncrease(product.getProductid());
         }else {
-            CartItem cartItem = new CartItem(product.getProductid(),product.getModel(),product.getPrice(),1,product.getPrice());
+            CartItem cartItem = new CartItem(product.getProductid(),product.getName(),product.getPrice(),1,product.getPrice());
             cartItemMap.put(cartItem.getProductid(),cartItem);
         }
     }

@@ -1,24 +1,15 @@
 package com.iit.servlet.model;
 
-import com.iit.bean.Accessory;
 import com.iit.bean.Cart;
 import com.iit.bean.Product;
-import com.iit.dao.ProductDao;
-import com.iit.dao.impl.ProductDaoImpl;
 import com.iit.service.ProductService;
 import com.iit.service.impl.ProductServiceImpl;
 import com.iit.servlet.base.ModelBaseServlet;
-import com.iit.utils.MySqlDataStoreUtilities;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class CartServlet extends ModelBaseServlet {

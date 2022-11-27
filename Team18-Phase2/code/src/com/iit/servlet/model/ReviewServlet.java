@@ -39,7 +39,7 @@ public class ReviewServlet extends ModelBaseServlet {
         try {
             product = productService.filterById(productId);
             int prodId = product.getProductid();
-            String productName = product.getModel();
+            String productName = product.getName();
             double productPrice = product.getPrice();
             String type = product.getType();
             String manufacturer = product.getManufacturer();

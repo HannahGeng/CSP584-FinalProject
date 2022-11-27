@@ -1,6 +1,5 @@
 package com.iit.dao.impl;
 
-import com.iit.bean.Accessory;
 import com.iit.bean.Product;
 import com.iit.dao.BaseDao;
 import com.iit.dao.ProductDao;
@@ -18,7 +17,6 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao {
         List<Product> resultData = new ArrayList<Product>();
         String sql = "select * from productcatalog where type="+"'"+type+"'";
         resultData = getBeanList(Product.class,sql);
-
         return resultData;
     }
 

@@ -1,13 +1,10 @@
 package com.iit.service.impl;
 
-import com.iit.bean.Accessory;
 import com.iit.bean.Product;
 import com.iit.dao.ProductDao;
 import com.iit.dao.impl.ProductDaoImpl;
 import com.iit.service.ProductService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {

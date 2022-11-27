@@ -1,11 +1,8 @@
 package com.iit.dao;
 
-import com.iit.bean.Accessory;
 import com.iit.bean.Product;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 

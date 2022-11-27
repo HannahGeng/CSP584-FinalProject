@@ -41,14 +41,15 @@
                 <a href="#"><img th:src="@{${'static/'+product.image}}" class="img-thumbnail"></a>
             </div>
             <div class="col-xs-6 divide-block">
-                <h4 class=""><a href="#" th:text="${product.model}">Amazon - Echo Dot (3rd Gen) - Smart Speaker with Alexa - Charcoal</a></h4>
-                <label class="control-label" th:text="${product.manufacturer}">Manufacturer: </label>
-                <label class="info-label">Amazon</label>
-                <x class="space"></x> |<label class="control-label space">Condition: </label>
-                <label class="info-label"  th:text="${product.condition}">New</label>
-                <x class="space"></x> |<label class="control-label space">Discount: </label>
-                <label class="info-label"  th:text="${product.discount}">10.0% </label> <br>
-                <label class="availibility" >Currently Available</label>
+                <h4 class=""><a href="#" th:text="${product.name}">Happy Money</a></h4>
+                <label class="control-label">Rating: </label>
+                <label class="info-label" th:text="${product.rating}">4.5/5</label> <br>
+                <label class="control-label">Loan amount: </label>
+                <label class="info-label" th:text="${'$'+product.loanamount}">$5,000-$100,000</label> <br>
+                <label class="control-label">Min. cretit score: </label>
+                <label class="info-label" th:text="${product.loanamount}">560</label> <br>
+                <label class="control-label" >Currently Available</label>
+                <label class="info-label" th:text="${product.quantity}">15</label> <br>
             </div>
             <div class="col-xs-1 space-price-block ">
                 <h3 class="price space"  th:text="${product.price}">$49.99</h3>

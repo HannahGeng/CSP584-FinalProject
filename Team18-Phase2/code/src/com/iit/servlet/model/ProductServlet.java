@@ -6,7 +6,6 @@ import com.iit.service.ProductService;
 import com.iit.service.impl.ProductServiceImpl;
 import com.iit.servlet.base.ModelBaseServlet;
 import com.iit.utils.MongoDBDataStoreUtilities;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -69,7 +68,7 @@ public class ProductServlet extends ModelBaseServlet {
         try {
             product = productService.filterById(productId);
             int prodId = product.getProductid();
-            String productName = product.getModel();
+            String productName = product.getName();
             double productPrice = product.getPrice();
             String type = product.getType();
             String manufacturer = product.getManufacturer();

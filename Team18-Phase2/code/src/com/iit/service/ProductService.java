@@ -1,9 +1,6 @@
 package com.iit.service;
-import com.iit.bean.Accessory;
 import com.iit.bean.Product;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public interface ProductService {

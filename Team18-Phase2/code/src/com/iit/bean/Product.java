@@ -1,67 +1,82 @@
 package com.iit.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Product implements Serializable {
-    private int productid;
-    private String model;
-    private double price;
+    private Integer productid;
+    private String name;
+    private Double price;
     private String image;
     private String manufacturer;
-    private String condition;
-    private double discount;
-    private int quantity;
+    private String creditscore;
+    private Double loanamount;
+    private Double rating;
+    private Integer quantity;
     private String type;
-    private ArrayList<Integer> accessories=null;
 
-    public Product() {
-        this.accessories = new ArrayList<Integer>();
+    public Product(){
+
     }
 
-    public Product(int productid, String model, double price, String image, String manufacturer, String condition,
-                   double discount, int quantity, String type, ArrayList<Integer> accessories) {
+    public Product(Integer productid, String name, Double price, String image, String manufacturer, String creditscore,
+                   Double loanamount, Double rating, Integer quantity, String type) {
         this.productid = productid;
-        this.model = model;
+        this.name = name;
         this.price = price;
         this.image = image;
         this.manufacturer = manufacturer;
-        this.condition = condition;
-        this.discount = discount;
+        this.creditscore = creditscore;
+        this.loanamount = loanamount;
+        this.rating = rating;
         this.quantity = quantity;
         this.type = type;
-        this.accessories = accessories;
     }
 
-    public String getModel() {
-        return model;
+    public String getName() {
+        return name;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCondition() {
-        return condition;
+    public String getCreditscore() {
+        return creditscore;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setCreditscore(String creditscore) {
+        this.creditscore = creditscore;
     }
 
-    public int getProductid() {
+    public Double getLoanamount() {
+        return loanamount;
+    }
+
+    public void setLoanamount(Double loanamount) {
+        this.loanamount = loanamount;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
+    public Integer getProductid() {
         return productid;
     }
 
-    public void setProductid(int productid) {
+    public void setProductid(Integer productid) {
         this.productid = productid;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -81,19 +96,11 @@ public class Product implements Serializable {
         this.manufacturer = manufacturer;
     }
 
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
@@ -105,21 +112,14 @@ public class Product implements Serializable {
         this.type = type;
     }
 
-    public ArrayList<Integer> getAccessories() {
-        return accessories;
-    }
-
-    public void setAccessories(ArrayList<Integer> accessories) {
-        this.accessories = accessories;
-    }
-
     public void updateProduct(Product updateProduct) {
-        this.model = updateProduct.model;
+        this.name = updateProduct.name;
         this.price = updateProduct.price;
         this.image = updateProduct.image;
         this.manufacturer = updateProduct.manufacturer;
-        this.condition = updateProduct.condition;
-        this.discount = updateProduct.discount;
+        this.loanamount = updateProduct.loanamount;
+        this.rating = updateProduct.rating;
+        this.creditscore = updateProduct.creditscore;
         this.quantity = updateProduct.quantity;
         this.type = updateProduct.type;
     }
