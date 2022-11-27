@@ -299,7 +299,12 @@ img.header-image {
 	float: right;
 	width: 71%;
 }
-
+#map {
+	height: 400px;
+	/* The height is 400 pixels */
+	width: 100%;
+	/* The width is the width of the web page */
+}
 article {
 	border-bottom: 2px solid #ddd;
 	padding: 10px 10px 20px 10px;
