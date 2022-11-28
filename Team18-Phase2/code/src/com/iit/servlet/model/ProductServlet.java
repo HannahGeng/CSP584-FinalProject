@@ -59,7 +59,6 @@ public class ProductServlet extends ModelBaseServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private void storeDataToMongoDB(HttpServletRequest request, HttpServletResponse response,

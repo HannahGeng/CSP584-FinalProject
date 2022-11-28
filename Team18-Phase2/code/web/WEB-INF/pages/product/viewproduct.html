@@ -40,14 +40,15 @@
                 <a href="#"><img th:src="@{${'static/'+product.image}}" class="img-thumbnail"></a>
             </div>
             <div class="col-xs-6 divide-block">
-                <h4 class=""><a href="#" th:text="${product.model}">Amazon - Echo Dot (3rd Gen) - Smart Speaker with Alexa - Charcoal</a></h4>
-                <label class="control-label" th:text="${product.manufacturer}">Manufacturer: </label>
-                <label class="info-label">Amazon</label>
-                <x class="space"></x> |<label class="control-label space">Condition: </label>
-                <label class="info-label "  th:text="${product.condition}">New</label>
-                <x class="space"></x> |<label class="control-label space">Discount: </label>
-                <label class="info-label"  th:text="${product.discount}">10.0% </label> <br>
-                <label class="availibility">Currently Available</label>
+                <h4 class=""><a href="#" th:text="${product.name}">Amazon - Echo Dot (3rd Gen) - Smart Speaker with Alexa - Charcoal</a></h4>
+                <label class="control-label">Rating: </label>
+                <label class="info-label" th:text="${product.rating}">Amazon</label>
+                <x class="space"></x> |<label class="control-label space">Loan amount: </label>
+                <label class="info-label" th:text="${product.loanamount}">New</label> <br>
+                <label class="control-label">Min. cretit score: </label>
+                <label class="info-label" th:text="${product.creditscore}">10.0% </label> <br>
+                <label class="control-label">Currently Available: </label>
+                <label class="info-label" th:text="${product.quantity}">10.0% </label>
             </div>
             <div class="col-xs-1 space-price-block ">
                 <h3 class="price space" th:text="${product.price}">$49.99</h3>
@@ -64,7 +65,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">
-                        <label class="dark">Retailer Name:</label>
+                        <label class="dark">Product Name:</label>
                         <input type="text" name="retailername">
                     </div>
                 </div>
@@ -128,7 +129,7 @@
             <div th:each="r : ${review}">
                 <div class="row">
                     <div class="col-md-3">
-                        <label class="dark">Retailer:</label>
+                        <label class="dark">Product:</label>
                         <label th:text="${r.retailername}"></label>
                     </div>
                     <div class="col-md-3">
