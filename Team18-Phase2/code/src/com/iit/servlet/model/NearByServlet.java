@@ -9,6 +9,8 @@ import com.google.maps.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NearByServlet extends ModelBaseServlet {
     public void showMap(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -56,10 +58,11 @@ public class NearByServlet extends ModelBaseServlet {
 //        Near near1 = new Near(res.results[0].name,res.results[0].formattedAddress);
 //        Near near2 = new Near(res.results[1].name,res.results[1].formattedAddress);
 //
-
-        request.setAttribute("nearlist",res.results);
+        request.setAttribute("nearlist", res.results);
         processTemplate("product/near-by", request, response);
         // Invoke .shutdown() after your application is done making requests
         context.shutdown();
     }
+
+
 }
