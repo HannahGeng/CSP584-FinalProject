@@ -35,12 +35,27 @@
 <div id="body">
   <section id="content">
       <div class="search-box">
-      <form name ='near-by'  action="near-by?method=getAddress" method="post">
+
+
+      <form name ='near-by' action='near-by?method=getAddress' method='post'>
           <table align='center'><tr><td>Enter Your Address<input name='address' type='text'></td>
           <td><input type='submit'  value='near-by'></td></tr></table>
       </form>
-          <div>
-              <div class="row row-space" th:each="product : ${productlist}">
+<!--          <div>-->
+<!--          <iframe class="map-top" width="598" height="450" th:src="@{${'https://www.google.com/maps/embed/v1/place?key=AIzaSyBvJ0-vbqwdWJdOYGGQOhkxfdF9JkRSLwo&q=}'+near.placeId+'&center='+near.geometry.location}}"></iframe>-->
+<!--          </div>-->
+          <div class="row row-space" th:each="near : ${nearlist}">
+
+              <h4 class=""><a herf="#" th:text="${near.name}"></a></h4>
+              <br>
+              <label class="control-label space">Address: </label>
+              <label class="info-label"  th:text="${near.vicinity}"></label>
+              <br>
+
+              <label class="control-label space">Rating: </label>
+              <label class="info-label"  th:text="${near.rating}"></label>
+              <br>
+
           </div>
           </div>
   </section>

@@ -1,7 +1,5 @@
 package com.iit.servlet.model;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.*;
 import com.iit.bean.Near;
@@ -25,6 +23,7 @@ public class NearByServlet extends ModelBaseServlet {
     public void getAddress (HttpServletRequest request, HttpServletResponse response) throws IOException, InterruptedException, ApiException {
         String address = request.getParameter("address");
 
+
         GeoApiContext context = new GeoApiContext.Builder()
                 .apiKey("AIzaSyBvJ0-vbqwdWJdOYGGQOhkxfdF9JkRSLwo")
                 .build();
@@ -37,20 +36,29 @@ public class NearByServlet extends ModelBaseServlet {
 
         PlacesSearchResponse res =
             PlacesApi.nearbySearchQuery(context, location)
-                    .radius(5000)
-                    .rankby(RankBy.DISTANCE)
+                    .radius(2000)
                     .language("en")
-                    .openNow(true)
-                    .type(PlaceType.ATM,PlaceType.BANK)
-                    .pageToken("next-page-token")
+                    .type(PlaceType.BANK)
                     .await();
 
+//        OkHttpClient client = new OkHttpClient().newBuilder()
+//                .build();
+//        MediaType mediaType = MediaType.parse("text/plain");
+//        RequestBody body = RequestBody.create(mediaType, "");
+//
+//        Request req = new Request.Builder()
+//                .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat+"%"+lng+"&radius=1500&type=atm&key=AIzaSyBvJ0-vbqwdWJdOYGGQOhkxfdF9JkRSLwo")
+//                .method("POST", body)
+//                .build();
+//        Response resp = client.newCall(req).execute();
+//        System.out.println(resp.body());
+////
+//        Near near1 = new Near(res.results[0].name,res.results[0].formattedAddress);
+//        Near near2 = new Near(res.results[1].name,res.results[1].formattedAddress);
+//
 
-
-        Near near1 = new Near(res.results[0].name,res.results[0].formattedAddress);
-        Near near2 = new Near(res.results[1].name,res.results[1].formattedAddress);
-
-
+        request.setAttribute("nearlist",res.results);
+        processTemplate("product/near-by", request, response);
         // Invoke .shutdown() after your application is done making requests
         context.shutdown();
     }
