@@ -30,12 +30,8 @@ public class UserServlet extends ModelBaseServlet {
 
         try {
             BeanUtils.populate(user,parameterMap);
-
             User loginUser = userService.doLogin(user);
-
             request.getSession().setAttribute(StoreConstants.USERSESSIONKEY,loginUser);
-
-//            processTemplate("index",request,response);
             processTemplate("user/login_success",request,response);
         } catch (Exception e) {
             e.printStackTrace();

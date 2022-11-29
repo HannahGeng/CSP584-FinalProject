@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class CartItem {
     private Integer productid;
-    private String model;
+    private String name;
     private Double price;
     private Integer count;
     private Double amount;
@@ -16,16 +16,16 @@ public class CartItem {
     public String toString() {
         return "CartItem{" +
                 "productId=" + productid +
-                ", model='" + model + '\'' +
+                ", name='" + name + '\'' +
                 ", price=" + price +
                 ", count=" + count +
                 ", amount=" + amount +
                 '}';
     }
 
-    public CartItem(Integer productid, String model, Double price, Integer count, Double amount) {
+    public CartItem(Integer productid, String name, Double price, Integer count, Double amount) {
         this.productid = productid;
-        this.model = model;
+        this.name = name;
         this.price = price;
         this.count = count;
         this.amount = amount;
@@ -39,12 +39,12 @@ public class CartItem {
         this.productid = productid;
     }
 
-    public String getModel() {
-        return model;
+    public String getName() {
+        return name;
     }
 
-    public void setModel(String bookName) {
-        this.model = model;
+    public void setName(String bookName) {
+        this.name = name;
     }
 
     public Double getPrice() {

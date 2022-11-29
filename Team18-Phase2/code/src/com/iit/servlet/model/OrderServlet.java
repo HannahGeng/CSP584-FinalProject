@@ -1,35 +1,27 @@
 package com.iit.servlet.model;
 
-import com.google.gson.JsonObject;
 import com.iit.bean.*;
 import com.iit.constant.StoreConstants;
-import com.iit.service.OrderItemService;
+import com.iit.dao.OrderDao;
+import com.iit.dao.impl.OrderDaoImpl;
 import com.iit.service.OrderService;
-import com.iit.service.StoreService;
-import com.iit.service.impl.OrderItemServiceImpl;
 import com.iit.service.impl.OrderServiceImpl;
-import com.iit.service.impl.StoreServiceImpl;
 import com.iit.servlet.base.ModelBaseServlet;
 import org.apache.commons.beanutils.BeanUtils;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class OrderServlet extends ModelBaseServlet {
 
-    StoreService storeService = new StoreServiceImpl();
     OrderService orderService = new OrderServiceImpl();
-    OrderItemService orderItemService = new OrderItemServiceImpl();
 
     public void toPlaceOrderPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<Store> storesList = storeService.selectStores();
-        request.setAttribute("stores", storesList);
 
         User user = (User)request.getSession().getAttribute(StoreConstants.USERSESSIONKEY);
 
@@ -41,42 +33,49 @@ public class OrderServlet extends ModelBaseServlet {
     }
 
     public void toVieworderPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        processTemplate("order/vieworder", request, response);
-    }
 
-    public void toOrderdetailPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        processTemplate("order/orderdetail", request, response);
+        User user = (User)request.getSession().getAttribute(StoreConstants.USERSESSIONKEY);
+        String uid = user.getUserid();
+        OrderDao orderDao = new OrderDaoImpl();
+        List<Order> orderlist = new ArrayList<Order>();
+        try {
+            orderlist = orderDao.selectOrderByUser(uid);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        request.setAttribute("orderlist",orderlist);
+        processTemplate("order/orderlist", request, response);
     }
 
     public void placeOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         Map<String, String[]> parameterMap = request.getParameterMap();
         Order order = new Order();
-        Cart cart = (Cart) request.getSession().getAttribute("cart");
+
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+        Map<Integer,CartItem> cartItemMap = cart.getCartItemMap();
+
         try {
             BeanUtils.populate(order, parameterMap);
-            orderService.saveOrder(order);
-            System.out.println(order.toString());
-            Map<Integer,CartItem> cartItem = cart.getCartItemMap();
-            int orderid = orderService.getLastID();
-            for (CartItem cartitem : cartItem.values()) {
-                OrderItem orderItem = new OrderItem(cartitem.getProductid(),
-                        orderid,cartitem.getCount(),
-                        cartitem.getModel(),
-                        cartitem.getAmount(),
-                        cartitem.getPrice(),
-                        null,
-                        null,
-                        null,
-                        0.0,
-                        1,
-                        cartitem.getProductid());
-                System.out.println(orderItem.toString());
-                orderItemService.saveOrderItem(orderItem);
+
+            for (Map.Entry<Integer, CartItem> cartItemEntry : cartItemMap.entrySet()) {
+                Integer productId = cartItemEntry.getValue().getProductid();
+                order.setProductid(productId);
+                order.setTotalamount(cartItemEntry.getValue().getPrice());
+                order.setOrderquantity(cartItemEntry.getValue().getCount());
+                order.setProductname(cartItemEntry.getValue().getName());
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                String strDate = dateFormat.format(new Date(System.currentTimeMillis()));
+                order.setCreatetime(strDate);
+                System.out.println("order:"+order);
+                orderService.saveOrder(order);
             }
 
+            int orderid = orderService.getLastID();
+
             request.setAttribute("orderid",orderid);
-            request.setAttribute("deliveryDate",new Date(System.currentTimeMillis()));
+            request.setAttribute("createDate",new Date(System.currentTimeMillis()));
             processTemplate("order/order_success", request, response);
         } catch (Exception e) {
             e.printStackTrace();

@@ -22,7 +22,6 @@ public class MySqlDataStoreUtilities {
     }
 
     public static DataSource getDataSource(){
-
         return dataSource;
     }
 

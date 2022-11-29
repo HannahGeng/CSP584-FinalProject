@@ -7,12 +7,6 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * 包名:com.atguigu.dao
- *
- * @author Leevi
- * 日期2021-05-12  11:00
- */
 public class BaseDao<T> {
     private QueryRunner queryRunner = new QueryRunner();
 

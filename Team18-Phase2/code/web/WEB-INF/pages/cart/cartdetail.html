@@ -38,7 +38,7 @@
         <form action="order?method=toPlaceOrderPage" method="post">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Cart Details</h3>
+                    <h3 class="box-title">Apply Details</h3>
                     <button class="btn btn-success pull-right" type="Submit">Place Order</button>
                 </div>
                 <div class="box-body no-padding">
@@ -48,16 +48,12 @@
                             <th style="width: 10px" color="black">#</th>
                             <th>Product</th>
                             <th>Quantity</th>
-                            <th>Buy Warranty</th>
                             <th>Remove</th>
                         </tr>
                         <tr th:each="cartItemEntry : ${session.cart.cartItemMap}">
-                            <td>1.</td>
-                            <td th:text="${cartItemEntry.value.model}">LG - 65" Class - LED - UK6090PUA Series - 2160p - Smart - 4K UHD TV with HDR</td>
+                            <td th:text="${cartItemEntry.value.productid}">1.</td>
+                            <td th:text="${cartItemEntry.value.name}">LG - 65" Class - LED - UK6090PUA Series - 2160p - Smart - 4K UHD TV with HDR</td>
                             <td th:value="${cartItemEntry.value.count}">1</td>
-                            <td>
-                                <input type="checkbox" name="warranty" th:value="${cartItemEntry.value.productid}" value="1">
-                            </td>
                             <td>
                                 <a th:href="@{/cart(method='removeCartItem',id=${cartItemEntry.value.productid})}" class="btn btn-outline-dark" role="button">Remove</a>
                             </td>
@@ -67,56 +63,6 @@
                 </div>
             </div>
         </form>
-        <div class="container">
-            <div class="col-md-12">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row center-row">
-                                <div class="col-xs-4" th:each="accessory : ${accessories}">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <img class="img-thumbnail accessory-img-block" th:src="@{${'static/'+accessory.image}}" alt="IMG">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="control-label" >Manufacturer: </label>
-                                                    <label class="info-label " th:text="${accessory.manufacturer}">Screenmom</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="control-label price">Price: </label>
-                                                    <label class="info-label " th:text="${accessory.price}"> 19.95 </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <form action="cart?method=addToCart" method="post">
-                                                        <input type="hidden" name="productid" th:value="${accessory.productid}">
-                                                        <button class="btn btn-outline-dark" type="submit">Add to Cart</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="fa fa-3x fa-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span></a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="fa fa-3x fa-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 </div>
 
@@ -156,18 +102,6 @@
 
 <script src="static/script/jquery.min.js"></script>
 <script src="static/script/bootstrap.min.js"></script>
-<script type="text/javascript">
-
-    $('.carousel').carousel();
-    $("select#delivery").change(function(){
-        if ($(this).val() == 'Store Pickup') {
-            $("#picklocation").prop("hidden","")
-        } else {
-            $("#picklocation").attr("hidden","hidden")
-        }
-    });
-
-</script>
 
 </body>
 

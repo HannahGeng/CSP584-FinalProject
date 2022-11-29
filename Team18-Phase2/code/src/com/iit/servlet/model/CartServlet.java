@@ -28,11 +28,7 @@ public class CartServlet extends ModelBaseServlet {
             }else {
                 cart.addToCart(product);
             }
-
-            List<Product> accessories = productService.findAccessoryByProductID(productID);
-            request.setAttribute("accessories",accessories);
             processTemplate("cart/cartdetail",request,response);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

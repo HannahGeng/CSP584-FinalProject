@@ -32,42 +32,47 @@
         display: table;
     }
 </style>
+
 <div id='body'>
     <section id='content'>
-        <div class="row">
-            <form action="order/cancelOrder" method="post">
-                <div class='box'>
+        <form action="order/cancelOrder" method="post">
+            <div class='box'>
                 <div class='box-header'>
                     <h3 class='box-title'>Order Details</h3>
                     <input type='hidden' name='cancelOrder' value =''>
-                    <button class='btn btn-danger pull-right' type='Submit'>Cancel Order</button>
                 </div>
-                <div class='box-body no-padding'>
-                    <table class='table table-striped center-table'>
-                        <tr>
-                            <th style='width: 10px'>#</th>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Delivery_Date</th>
-                            <th>Price</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>Speck - Presidio STAY CLEAR Case for Apple® iPhone® 11 - Clear</td>
-                            <td>Speck - Presidio STAY</td>
-                            <td>$399</td>
-                        </tr>
-                        <tr>
-                            <td colspan='5' class='total' >Total &nbsp:&nbsp $></td>
-                        </tr>
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th style='width: 10px'>#</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Create Time</th>
+                                <th>Price</th>
+                                <th>Remove</th>
+                            </tr>
+                            <tr th:each="order : ${orderlist}">
+                                <td  th:text="${order.productid}">1</td>
+                                <td th:text="${order.productname}">2</td>
+                                <td th:text="${order.orderquantity}">Speck - Presidio STAY CLEAR Case for Apple® iPhone® 11 - Clear</td>
+                                <td th:text="${order.createtime}">Speck - Presidio STAY</td>
+                                <td th:text="${order.totalamount}">$399</td>
+                                <td>
+                                    <a th:href="@{/cart(method='removeOrderItem',id=${order.orderid})}" class="btn btn-outline-dark" role="button">Remove</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='5' class='total' >Total &nbsp:&nbsp $></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </section>
 </div>
+
 <style>
     .sidebar h4 {
         padding-bottom: 0;
@@ -97,22 +102,13 @@
         border-radius: 20px;
     }
 </style>
+
 <div id="left" th:include="left :: left"></div>
 
 <div id="footer" th:include="footer :: footer"></div>
 
 <script src="static/script/jquery.min.js"></script>
 <script src="static/script/bootstrap.min.js"></script>
-<script type="text/javascript">
-    $('.carousel').carousel();
-    $("select#delivery").change(function(){
-        if ($(this).val() === '1') {
-            $("#picklocation").prop("hidden","")
-        } else {
-            $("#picklocation").attr("hidden","hidden")
-        }
-    });
-</script>
 
 </body>
 

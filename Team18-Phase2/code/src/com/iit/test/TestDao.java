@@ -6,16 +6,12 @@ import com.iit.dao.ProductDao;
 import com.iit.dao.impl.ProductDaoImpl;
 import com.iit.dao.impl.UserDaoImpl;
 import com.iit.service.ProductService;
-import com.iit.service.StoreService;
 import com.iit.service.impl.ProductServiceImpl;
-import com.iit.service.impl.StoreServiceImpl;
 import com.iit.utils.MySqlDataStoreUtilities;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.junit.Test;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
 
@@ -50,12 +46,6 @@ public class TestDao extends BaseDao<Order> {
     public void getAccessories() throws Exception {
         ProductService productService = new ProductServiceImpl();
         List<Product> accessories = productService.findAccessoryByProductID(1);
-    }
-
-    @Test
-    public void getStores() throws Exception {
-        StoreService storeService = new StoreServiceImpl();
-        List<Store> stores = storeService.selectStores();
     }
 
     @Test
