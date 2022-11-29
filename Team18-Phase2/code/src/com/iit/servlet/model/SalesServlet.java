@@ -25,10 +25,12 @@ public class SalesServlet extends ModelBaseServlet {
 			throws ServletException, IOException {
 		MySqlDataStoreUtilities msdsu = new MySqlDataStoreUtilities();
 		HashMap<String, ArrayList<Sales>> allSales = msdsu.getAllSale();
+		ArrayList<Sales> sales = allSales.get("All Sale");
 		HashMap<String, ArrayList<DailySale>> dailySales = msdsu.getDailySale();
+		ArrayList<DailySale> dailySale = dailySales.get("Daily Sale");
 
-		request.setAttribute("allSales",allSales);
-		request.setAttribute("dailySales",dailySales);
+		request.setAttribute("allSales",sales);
+		request.setAttribute("dailySales",dailySale);
 		processTemplate("order/sales_report",request,response);
 	}
 
