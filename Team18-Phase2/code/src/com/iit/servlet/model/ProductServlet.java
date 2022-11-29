@@ -34,6 +34,23 @@ public class ProductServlet extends ModelBaseServlet {
             e.printStackTrace();
         }
     }
+    public void showInsInvProductList(HttpServletRequest request,HttpServletResponse response) {
+        String type = request.getParameter("type");
+        String manufacturer = request.getParameter("manufacturer");
+        List<Product> InsInvproductlist = new ArrayList<Product>();
+        try {
+            if(manufacturer==null) {
+                InsInvproductlist = productService.filterByType(type);
+            }else {
+                InsInvproductlist = productService.filterByManufacturer(type, manufacturer);
+            }
+            request.setAttribute("type",type);
+            request.setAttribute("productlist",InsInvproductlist);
+            processTemplate("product/InsInvproductlist",request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void toViewProductPage(HttpServletRequest request,HttpServletResponse response) throws IOException {
 
