@@ -30,6 +30,8 @@
                     <a class="nav-item nav-link active" href="product?method=showProductList&type=Insurances">Insurances</a>
                     <a class="nav-item nav-link active" href="product?method=showProductList&type=Investments">Investments</a>
                     <a class="nav-item nav-link active" href="near-by?method=showMap&type=near-me">Near-Me</a>
+                    <a class="nav-item nav-link active" href="recommend?method=showRecommend&type=recommend">Recommend</a>
+
                 </div>
             </div>
         </div>
@@ -53,8 +55,8 @@
                     <a class="nav-item nav-link active" href="product?method=showProductList&type=Loans">Loans</a>
                     <a class="nav-item nav-link active" href="product?method=showProductList&type=Insurances">Insurances</a>
                     <a class="nav-item nav-link active" href="product?method=showProductList&type=Investments">Investments</a>
-                    <a class="nav-item nav-link active" href="product?method=showProductList&type=Near-Me">Near-Me</a>
-                </div>
+                    <a class="nav-item nav-link active" href="near-by?method=showMap&type=near-me">Near-Me</a>
+                    <a class="nav-item nav-link active" href="recommend?method=showRecommend&type=recommend">Recommend</a>
             </div>
         </div>
         <a href="cart?method=toCartPage" class="nav-item nav-link active">Apply<sub th:if="${session.cart != null}" th:text="${session.cart.totalCount}">(3)</sub></a>

@@ -20,7 +20,7 @@ public class TestDao extends BaseDao<Order> {
     public void adduser() throws Exception {
 //        	public User(String userId, String password, String fname, String lname, String email, String mno, int role) {
 
-            User user = new User("@binghan", "binghan", "Geng", "Binghan","bgeng@hawk.iit.edu","3123949380",2);
+            User user = new User("@binghan", "binghan", "Geng", "Binghan","bgeng@hawk.iit.edu","3123949380","loan",2);
             new UserDaoImpl().addUser(user);
     }
 
