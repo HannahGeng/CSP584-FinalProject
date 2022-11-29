@@ -1,10 +1,14 @@
 package com.iit.utils;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
+import com.iit.bean.DailySale;
+import com.iit.bean.Sales;
+
 import javax.sql.DataSource;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 
@@ -59,6 +63,58 @@ public class MySqlDataStoreUtilities {
             e.printStackTrace();
         }
         return data;
+    }
+
+    public HashMap<String, ArrayList<Sales>> getAllSale() {
+        HashMap<String, ArrayList<Sales>> result = new HashMap<String, ArrayList<Sales>>();
+        ArrayList<Sales> sales = new ArrayList<Sales>();
+        try {
+            Connection con = getConnection();
+            String SQL = "select c.ordername ,p.model, p.price,p.price * sum(c.orderquantity) as totalsale, sum(c.orderquantity),p.ptype from customerorders as c Join productcatalog as p on c.ordername = p.productid group by c.ordername";
+            ResultSet rs = con.prepareStatement(SQL).executeQuery();
+            // System.out.println(rs);
+            Sales s = null;
+            while (rs.next()) {
+                s = null;
+                s = new Sales(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4), rs.getInt(5), rs.getString(6));
+                sales.add(s);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (sales.size() == 0) {
+            result.put("ERROR", null);
+        } else {
+
+            result.put("All Sale", sales);
+        }
+        return result;
+    }
+
+    public HashMap<String, ArrayList<DailySale>> getDailySale() {
+        HashMap<String, ArrayList<DailySale>> result = new HashMap<String, ArrayList<DailySale>>();
+        ArrayList<DailySale> sale = new ArrayList<DailySale>();
+        try {
+            Connection con = getConnection();
+            String SQL = "select DATE(DATE_SUB(c.deliverydate, Interval 15 day)),sum(c.orderquantity) , sum(c.orderquantity * p.price) from customerorders as c Join productcatalog as p on c.ordername = p.productid   group by DATE(DATE_SUB(c.deliverydate, Interval 15 day)) order by DATE(DATE_SUB(c.deliverydate, Interval 15 day)) ASC";
+            ResultSet rs = con.prepareStatement(SQL).executeQuery();
+            DailySale ds = null;
+            while (rs.next()) {
+                ds = null;
+                ds = new DailySale(rs.getString(1), rs.getInt(2), rs.getDouble(3));
+                sale.add(ds);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (sale.size() > 0) {
+            result.put("Daily Sale", sale);
+        } else {
+            result.put("ERROR", sale);
+        }
+        return result;
     }
 
 }

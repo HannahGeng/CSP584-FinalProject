@@ -34,6 +34,7 @@ public class ProductServlet extends ModelBaseServlet {
             e.printStackTrace();
         }
     }
+
     public void showInsInvProductList(HttpServletRequest request,HttpServletResponse response) {
         String type = request.getParameter("type");
         String manufacturer = request.getParameter("manufacturer");

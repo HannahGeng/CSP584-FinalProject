@@ -1,7 +1,8 @@
 $(document).ready(
 		function() {
+			console.log("sales chart");
 			$.ajax({
-				url : "SalesChart",
+				url : "sales?method=getSalesChart",
 				dataType : "JSON",
 				success : function(result) {
 					google.charts.load('current', {
