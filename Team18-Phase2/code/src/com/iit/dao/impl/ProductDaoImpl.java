@@ -47,7 +47,7 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao {
     @Override
     public LinkedHashMap<String, Integer> getMostSelled() {
         LinkedHashMap<String, Integer> p = new LinkedHashMap();
-        String sql = "SELECT productcatalog.model, SUM(order_item.pcount) AS TotalItemsSold FROM productcatalog,order_item where productcatalog.productid=order_item.productid group by order_item.productid order by SUM(order_item.pcount) DESC limit 5";
+        String sql = "SELECT productcatalog.model, SUM(order.orderquantity) AS TotalItemsSold FROM productcatalog,order where productcatalog.productid=order.productid group by order.productid order by SUM(order.orderquantity) DESC limit 5";
         Connection conn = MySqlDataStoreUtilities.getConnection();
         ResultSet rs = null;
         try {

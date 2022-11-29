@@ -47,7 +47,7 @@ public class MySqlDataStoreUtilities {
         HashMap<Integer, String> data = new HashMap<Integer, String>();
         try {
             Connection con = getConnection();
-            String sql = "select productid, model from productcatalog where model like '%" + searchId
+            String sql = "select productid, name from productcatalog where name like '%" + searchId
                     + "%' and type!= 'Accessory'";
             ResultSet rs = con.prepareStatement(sql).executeQuery();
             while (rs.next()) {

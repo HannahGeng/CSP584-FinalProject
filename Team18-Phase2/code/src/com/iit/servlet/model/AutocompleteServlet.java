@@ -14,6 +14,7 @@ public class AutocompleteServlet extends ModelBaseServlet {
    public void autoSearch(HttpServletRequest request,HttpServletResponse response) {
        String action = request.getParameter("action");
        String searchId = request.getParameter("searchId");
+       
        try {
            StringBuffer sb = new StringBuffer();
            boolean namesAdded = false;
