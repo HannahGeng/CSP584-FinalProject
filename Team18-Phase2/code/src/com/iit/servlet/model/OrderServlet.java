@@ -17,8 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class OrderServlet  extends ModelBaseServlet {
-
+public class OrderServlet extends ModelBaseServlet {
     OrderService orderService = new OrderServiceImpl();
 
     public void toPlaceOrderPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
