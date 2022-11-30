@@ -21,4 +21,6 @@ public interface ProductDao {
     LinkedHashMap<String, Integer> getMostSelled();
 
     LinkedHashMap<String, Integer> getTopZip();
+
+    List<Product> selectProductById(int id) throws SQLException;
 }
