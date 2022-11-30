@@ -47,18 +47,6 @@ public class ProductServlet extends ModelBaseServlet {
             e.printStackTrace();
         }
     }
-    public void showProduct(HttpServletRequest request,HttpServletResponse response) {
-        int Id = Integer.parseInt(request.getParameter("Id"));
-        List<Product> productlist = new ArrayList<Product>();
-        try {
-            productlist = (List<Product>) productService.filterById(Id);
-            request.setAttribute("productId",Id);
-            request.setAttribute("productlist",productlist);
-            processTemplate("product/productdetials",request,response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public void showInsInvProductList(HttpServletRequest request,HttpServletResponse response) {
         String type = request.getParameter("type");
@@ -107,23 +95,6 @@ public class ProductServlet extends ModelBaseServlet {
     public void toAddProductPage(HttpServletRequest request,HttpServletResponse response) throws IOException {
 
         processTemplate("product/addproduct",request,response);
-    }
-
-    public void toEditProductPage(HttpServletRequest request,HttpServletResponse response) throws IOException {
-
-        processTemplate("product/editproduct",request,response);
-    }
-    public void toProductdetailPage(HttpServletRequest request,HttpServletResponse response) throws IOException {
-        int Id = Integer.parseInt(request.getParameter("Id"));
-        List<Product> productlist = new ArrayList<Product>();
-        try {
-            productlist = (List<Product>) productService.filterById(Id);
-            request.setAttribute("productId",Id);
-            request.setAttribute("productlist",productlist);
-            processTemplate("product/productdetials",request,response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public void addProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {

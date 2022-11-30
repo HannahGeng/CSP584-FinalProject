@@ -19,12 +19,6 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao {
         resultData = getBeanList(Product.class,sql);
         return resultData;
     }
-    public List<Product> selectProductById(int Id) throws SQLException {
-        List<Product> resultData = new ArrayList<Product>();
-        String sql = "select * from productcatalog where productId="+"'"+Id+"'";
-        resultData = getBeanList(Product.class,sql);
-        return resultData;
-    }
 
     @Override
     public List<Product> selectProductByManufacturer(String type, String manufacturer) throws SQLException {

@@ -18,9 +18,6 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> filterByType(String type) throws Exception {
         return productDao.selectProductByType(type);
     }
-    public List<Product> filterById(int Id) throws Exception {
-        return productDao.selectProductById(Id);
-    }
 
     @Override
     public List<Product> filterByManufacturer(String type, String manufacturer) throws Exception {
