@@ -56,7 +56,7 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao {
     @Override
     public LinkedHashMap<String, Integer> getMostSelled() {
         LinkedHashMap<String, Integer> p = new LinkedHashMap();
-        String sql = "SELECT productcatalog.model, SUM(order.orderquantity) AS TotalItemsSold FROM productcatalog,order where productcatalog.productid=order.productid group by order.productid order by SUM(order.orderquantity) DESC limit 5";
+        String sql = "SELECT productcatalog.name, SUM(`order`.orderquantity) AS TotalItemsSold FROM productcatalog, `order` where productcatalog.productid=`order`.productid group by `order`.productid order by SUM(`order`.orderquantity) DESC limit 5";
         Connection conn = MySqlDataStoreUtilities.getConnection();
         ResultSet rs = null;
         try {
@@ -98,5 +98,10 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao {
     public void updateProduct(Product product) throws Exception {
         String sql = "update productcatalog set name=?,price=?,loanamount=?,image=?,manufacturer=?,rating=?,quantity=?,type=?,creditscore=? where productid=?";
         update(sql,product.getName(),product.getPrice(),product.getLoanamount(),product.getImage(),product.getManufacturer(),product.getRating(),product.getQuantity(),product.getType(),product.getCreditscore(),product.getProductid());
+    }
+
+    public void deleteProduct(Integer id) throws Exception {
+        String sql = "delete from productcatalog where productid=?";
+        update(sql,id);
     }
 }

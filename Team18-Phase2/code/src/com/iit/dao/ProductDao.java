@@ -23,4 +23,6 @@ public interface ProductDao {
     LinkedHashMap<String, Integer> getTopZip();
 
     void updateProduct(Product product) throws Exception;
+
+    public void deleteProduct(Integer id) throws Exception;
 }

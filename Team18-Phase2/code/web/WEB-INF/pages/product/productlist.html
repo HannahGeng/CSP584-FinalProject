@@ -47,7 +47,7 @@
                 <label class="info-label" th:text="${product.rating}">4.5/5</label>
                 <br>
                 <label class="control-label">Loan amount: </label>
-                <label class="info-label" th:text="${'$'+product.loanamount}">$5,000-$100,000</label>
+                <label class="info-label" th:text="@{${'$'+product.loanamount}}">$5,000-$100,000</label>
                 <br>
                 <label class="control-label">Min. cretit score: </label>
                 <label class="info-label" th:text="${product.creditscore}">560</label>
@@ -95,6 +95,8 @@
         </div>
         <hr class="draw-line">
     </section>
+</div>
+
 <style>
     .sidebar h4 {
         padding-bottom: 0;
@@ -143,7 +145,7 @@
     });
 
 </script>
-</div>
+
 </body>
 
 </html>

@@ -54,4 +54,9 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
         }
         return result;
     }
+
+    public void deleteOrder(Integer id) throws Exception {
+        String sql = "delete from `order` where orderid=?";
+        update(sql,id);
+    }
 }

@@ -15,4 +15,5 @@ public interface OrderDao {
 
     List<Order> selectOrderByUser(String userid) throws SQLException;
 
+    public void deleteOrder(Integer id) throws Exception;
 }

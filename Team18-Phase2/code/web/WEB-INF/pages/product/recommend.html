@@ -35,10 +35,6 @@
 
 <div id="body">
   <section id="content">
-    <div th:if="${session.loginUser == null}">
-      <h4 class="form-signin-heading"><strong>Please <em><a href="user?method=toLoginPage" >Log in</a></em> to get your customized financial event recommendation</strong></h4>
-    </div>
-    <div th:if="${session.loginUser != null}">
       <h5>Here's some events selected for you based on your preference: <strong th:text="${session.loginUser.preference}"></strong></h5>
 
           <div class="row row-space" th:each="event : ${recommend}">

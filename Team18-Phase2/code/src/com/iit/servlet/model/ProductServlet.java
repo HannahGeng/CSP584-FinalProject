@@ -137,6 +137,18 @@ public class ProductServlet extends ModelBaseServlet {
         }
     }
 
+    public  void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int productID = Integer.parseInt(request.getParameter("id"));
+        ProductDao productDao = new ProductDaoImpl();
+        try {
+            productDao.deleteProduct(productID);
+            request.setAttribute("productid",productID);
+            processTemplate("product/delete_success",request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void storeDataToMysql(HttpServletRequest request, HttpServletResponse response,
                                     Integer productId,String name, Double price,String image,Double loanamount,String manufacturer,Double rating,int quantity,String type,String creditscore) {
         Product product= new Product(productId,name,price,image,manufacturer,creditscore,loanamount,rating,quantity,type);

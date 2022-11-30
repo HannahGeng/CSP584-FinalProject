@@ -81,7 +81,4 @@ public class OrderServlet extends ModelBaseServlet {
         }
     }
 
-    public void salesReport(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-    }
 }

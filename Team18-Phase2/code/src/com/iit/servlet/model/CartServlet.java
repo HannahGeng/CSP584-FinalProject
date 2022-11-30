@@ -2,6 +2,8 @@ package com.iit.servlet.model;
 
 import com.iit.bean.Cart;
 import com.iit.bean.Product;
+import com.iit.dao.OrderDao;
+import com.iit.dao.impl.OrderDaoImpl;
 import com.iit.service.ProductService;
 import com.iit.service.impl.ProductServiceImpl;
 import com.iit.servlet.base.ModelBaseServlet;
@@ -43,11 +45,15 @@ public class CartServlet extends ModelBaseServlet {
         processTemplate("cart/cartdetail",request,response);
     }
 
-    public void removeCartItem(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void removeOrderItem(HttpServletRequest request,HttpServletResponse response) throws IOException {
         Integer id = Integer.valueOf(request.getParameter("id"));
-        Cart cart = (Cart) request.getSession().getAttribute("cart");
-        cart.removeCartItem(id);
-        processTemplate("cart/cartdetail",request,response);
+        OrderDao orderDao = new OrderDaoImpl();
+        try {
+            orderDao.deleteOrder(id);
+            response.sendRedirect(request.getContextPath()+"/order?method=toVieworderPage");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void updateCartItemCount(HttpServletRequest request,HttpServletResponse response) throws IOException {
