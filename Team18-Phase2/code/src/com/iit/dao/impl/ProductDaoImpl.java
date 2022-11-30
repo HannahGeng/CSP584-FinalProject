@@ -96,11 +96,7 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao {
 
     @Override
     public void updateProduct(Product product) throws Exception {
-        String sql = "insert into `productcatalog` (productid,name," +
-                "price,loanamount,image,manufacturer,rating,quantity,"+
-                "type,creditscore) values (?,?,?,?,?,?,?,?,?,?)";
-        update(sql,product.getProductid(),product.getName(),product.getPrice(),product.getLoanamount(),
-                product.getImage(),product.getManufacturer(),product.getRating(),
-                product.getQuantity(),product.getType(),product.getCreditscore());
+        String sql = "update productcatalog set name=?,price=?,loanamount=?,image=?,manufacturer=?,rating=?,quantity=?,type=?,creditscore=? where productid=?";
+        update(sql,product.getName(),product.getPrice(),product.getLoanamount(),product.getImage(),product.getManufacturer(),product.getRating(),product.getQuantity(),product.getType(),product.getCreditscore(),product.getProductid());
     }
 }

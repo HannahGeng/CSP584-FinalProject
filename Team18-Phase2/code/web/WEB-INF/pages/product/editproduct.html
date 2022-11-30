@@ -40,10 +40,11 @@
                 <div class="container text-center">
                     <form class="form-signin" method="post" action="product?method=updateProduct">
                         <center><h2 class="form-signin-heading">Update Product</h2></center>
-                        <label for="productId" class="dark">Product Id</label>
-                        <input name="productId" th:value="${product.productid}" disabled type="text" id="productId" class="form-control" placeholder="productId" required="" autofocus="">
-                        <label for="productName" class="dark">Product Name</label>
-                        <input th:value="${product.name}" name="productName" type="text" id="productName" class="form-control" placeholder="Model Name" required="">
+                        <label for="productid" class="dark">Product Id</label>
+                        <input type="hidden" name="productid" th:value="${product.productid}"/>
+                        <input name="productid" th:value="${product.productid}" disabled type="text" id="productid" class="form-control" placeholder="productId" required="" autofocus="">
+                        <label for="name" class="dark">Product Name</label>
+                        <input th:value="${product.name}" name="name" type="text" id="name" class="form-control" placeholder="Product Name" required="">
                         <label for="price" class="dark">Price</label>
                         <input th:value="${product.price}" name="price" type="text" id="price" class="form-control" placeholder="Price" required="">
                         <label for="image" class="dark">Price</label>
@@ -67,7 +68,7 @@
                         <input th:value="${product.creditscore}" name="creditscore" type="text" id="creditscore" class="form-control" placeholder="creditscore" required="">
                         <label for="loanamount" class="dark">loanamount</label>
                         <input th:value="${product.loanamount}" name="loanamount" type="text" id="loanamount" class="form-control" placeholder="loanamount" required="">
-                        <label for="rating" class="dark">Quantity</label>
+                        <label for="rating" class="dark">Rating</label>
                         <input th:value="${product.rating}" name="rating" type="text" id="rating" class="form-control" placeholder="rating" required="">
                         <label for="quantity" class="dark">Quantity</label>
                         <input th:value="${product.quantity}" name="quantity" type="text" id="quantity" class="form-control" placeholder="Quantity" required="">

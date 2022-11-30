@@ -2,19 +2,20 @@ package com.iit.servlet.model;
 
 import com.iit.bean.Product;
 import com.iit.bean.Review;
+import com.iit.bean.User;
+import com.iit.dao.ProductDao;
+import com.iit.dao.impl.ProductDaoImpl;
 import com.iit.service.ProductService;
 import com.iit.service.impl.ProductServiceImpl;
 import com.iit.servlet.base.ModelBaseServlet;
 import com.iit.utils.MongoDBDataStoreUtilities;
 import com.iit.utils.MySqlDataStoreUtilities;
+import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import javax.servlet.http.HttpSession;
 
 public class ProductServlet extends ModelBaseServlet {
@@ -58,7 +59,6 @@ public class ProductServlet extends ModelBaseServlet {
     }
 
     public void toViewProductPage(HttpServletRequest request,HttpServletResponse response) throws IOException {
-
         int productID = Integer.parseInt(request.getParameter("id"));
         try {
             Product product = productService.filterById(productID);
@@ -123,6 +123,20 @@ public class ProductServlet extends ModelBaseServlet {
         processTemplate("product/editproduct",request,response);
     }
 
+    public void updateProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        ProductDao productDao = new ProductDaoImpl();
+        try {
+            int productID = Integer.parseInt(request.getParameter("productid"));
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            Product product = new Product();
+            BeanUtils.populate(product, parameterMap);
+            productDao.updateProduct(product);
+            response.sendRedirect(request.getContextPath()+"/product?method=toViewProductPage&id="+productID);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void storeDataToMysql(HttpServletRequest request, HttpServletResponse response,
                                     Integer productId,String name, Double price,String image,Double loanamount,String manufacturer,Double rating,int quantity,String type,String creditscore) {
         Product product= new Product(productId,name,price,image,manufacturer,creditscore,loanamount,rating,quantity,type);
@@ -132,6 +146,7 @@ public class ProductServlet extends ModelBaseServlet {
             e.printStackTrace();
         }
     }
+
     private void storeDataToMongoDB(HttpServletRequest request, HttpServletResponse response,
                                     Integer productId) {
         Product product;
