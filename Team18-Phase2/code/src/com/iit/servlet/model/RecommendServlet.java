@@ -18,72 +18,75 @@ import java.util.Map;
 public class RecommendServlet extends ModelBaseServlet {
     public void showRecommend(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute(StoreConstants.USERSESSIONKEY);
-        String preference = user.getPreference();
-        JsonArray event = null;
-        if (preference.equals("loan")) {
-            Map<String, String> parameter = new HashMap<>();
+        if (user != null) {
+            String preference = user.getPreference();
+            JsonArray event = null;
+            if (preference.equals("loan")) {
+                Map<String, String> parameter = new HashMap<>();
 
-            parameter.put("api_key", "67de5b0f058fda90127575f55ea23ec65e70e22918b2e0ebc1f44c8951089e49");
-            parameter.put("device", "desktop");
-            parameter.put("engine", "google_events");
-            parameter.put("q", "loan events");
-            parameter.put("htichips", "date:week");
+                parameter.put("api_key", "67de5b0f058fda90127575f55ea23ec65e70e22918b2e0ebc1f44c8951089e49");
+                parameter.put("device", "desktop");
+                parameter.put("engine", "google_events");
+                parameter.put("q", "loan events");
+                parameter.put("htichips", "date:week");
 
-            GoogleSearch search = new GoogleSearch(parameter);
+                GoogleSearch search = new GoogleSearch(parameter);
 
-            try {
-                JsonObject results = search.getJson();
-                event = results.getAsJsonArray("events_results");
+                try {
+                    JsonObject results = search.getJson();
+                    event = results.getAsJsonArray("events_results");
 
-            } catch (SerpApiSearchException e) {
+                } catch (SerpApiSearchException e) {
 
+                }
+
+            } else if (preference.equals("insurance")) {
+                Map<String, String> parameter = new HashMap<>();
+
+                parameter.put("api_key", "67de5b0f058fda90127575f55ea23ec65e70e22918b2e0ebc1f44c8951089e49");
+                parameter.put("device", "desktop");
+                parameter.put("engine", "google_events");
+                parameter.put("q", "insurance events");
+                parameter.put("htichips", "date:week");
+
+                GoogleSearch search = new GoogleSearch(parameter);
+
+                try {
+                    JsonObject results = search.getJson();
+                    event = results.getAsJsonArray("events_results");
+
+                } catch (SerpApiSearchException e) {
+
+                }
+            }else if (preference.equals("investment")){
+                Map<String, String> parameter = new HashMap<>();
+
+                parameter.put("api_key", "67de5b0f058fda90127575f55ea23ec65e70e22918b2e0ebc1f44c8951089e49");
+                parameter.put("device", "desktop");
+                parameter.put("engine", "google_events");
+                parameter.put("q", "investment events");
+                parameter.put("htichips", "date:week");
+
+                GoogleSearch search = new GoogleSearch(parameter);
+
+                try {
+                    JsonObject results = search.getJson();
+                    event = results.getAsJsonArray("events_results");
+
+                } catch (SerpApiSearchException e) {
+
+                }
             }
-
-        } else if (preference.equals("insurance")) {
-            Map<String, String> parameter = new HashMap<>();
-
-            parameter.put("api_key", "67de5b0f058fda90127575f55ea23ec65e70e22918b2e0ebc1f44c8951089e49");
-            parameter.put("device", "desktop");
-            parameter.put("engine", "google_events");
-            parameter.put("q", "insurance events");
-            parameter.put("htichips", "date:week");
-
-            GoogleSearch search = new GoogleSearch(parameter);
-
-            try {
-                JsonObject results = search.getJson();
-                event = results.getAsJsonArray("events_results");
-
-            } catch (SerpApiSearchException e) {
-
-            }
-        }else if (preference.equals("investment")){
-            Map<String, String> parameter = new HashMap<>();
-
-            parameter.put("api_key", "67de5b0f058fda90127575f55ea23ec65e70e22918b2e0ebc1f44c8951089e49");
-            parameter.put("device", "desktop");
-            parameter.put("engine", "google_events");
-            parameter.put("q", "investment events");
-            parameter.put("htichips", "date:week");
-
-            GoogleSearch search = new GoogleSearch(parameter);
-
-            try {
-                JsonObject results = search.getJson();
-                event = results.getAsJsonArray("events_results");
-
-            } catch (SerpApiSearchException e) {
-
-            }
-        }
 //        for(JsonElement e:event) {
 //            String address = e.getAsJsonObject().getAsJsonArray("address").get(0).getAsString()+", "+e.getAsJsonObject().getAsJsonArray("address").get(1).getAsString();
 //            System.out.println(address);
 //        }
-        request.setAttribute("recommend", event);
+            request.setAttribute("recommend", event);
 
-        processTemplate("product/recommend", request, response);
-
+            processTemplate("product/recommend", request, response);
+        } else {
+            processTemplate("user/login",request,response);
+        }
     }
 
 //    public void getRecommend(HttpServletRequest request, HttpServletResponse response) throws IOException {
