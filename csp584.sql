@@ -83,13 +83,13 @@ INSERT INTO `productcatalog` VALUES (18, 'splash-financial-stu', 349.99, 25000, 
 INSERT INTO `productcatalog` VALUES (19, 'mefa', 749, 35000, 'imagesNew/19.jpg', 'StudentLoans', 10, 15, 'Loans', '600');
 INSERT INTO `productcatalog` VALUES (20, 'Ladder-life', 1150.99, NULL, 'imagesNew/20.jpg', 'LifeInsurance', 10, 15, 'Insurances', NULL);
 INSERT INTO `productcatalog` VALUES (21, 'Lincole Financial', 1250, NULL, 'imagesNew/21.jpg', 'LifeInsurance', 10, 15, 'Insurances', NULL);
-INSERT INTO `productcatalog` VALUES (22, 'Pacific Life', 499, NULL, 'imagesNew/22.png', 'LifeInsurance', 0, 15, 'Insurances', NULL);
-INSERT INTO `productcatalog` VALUES (23, 'United Healthcare', 549, NULL, 'imagesNew/23.png', 'HealthInsurance', 0, 15, 'Insurances', NULL);
-INSERT INTO `productcatalog` VALUES (24, 'Altrua', 749, NULL, 'imagesNew/24.png', 'HealthInsurance', 0, 15, 'Insurances', NULL);
+INSERT INTO `productcatalog` VALUES (22, 'Pacific Life', 499, NULL, 'imagesNew/22.jpg', 'LifeInsurance', 0, 15, 'Insurances', NULL);
+INSERT INTO `productcatalog` VALUES (23, 'United Healthcare', 549, NULL, 'imagesNew/23.jpg', 'HealthInsurance', 0, 15, 'Insurances', NULL);
+INSERT INTO `productcatalog` VALUES (24, 'Altrua', 749, NULL, 'imagesNew/24.jpg', 'HealthInsurance', 0, 15, 'Insurances', NULL);
 INSERT INTO `productcatalog` VALUES (25, 'globe_life', 669, NULL, 'imagesNew/25.png', 'HealthInsurance', 0, 15, 'Insurances', NULL);
 INSERT INTO `productcatalog` VALUES (26, 'Fidelity', 900, NULL, 'imagesNew/26.jpg', 'Stocks', 10, 15, 'Investments', NULL);
 INSERT INTO `productcatalog` VALUES (27, 'Merrill', 800, NULL, 'imagesNew/27.jpg', 'Stocks', 10, 15, 'Investments', NULL);
-INSERT INTO `productcatalog` VALUES (28, 'JPMorgan', 700, NULL, 'imagesNew/28.jpg', 'Stocks', 10, 15, 'Investments', NULL);
+INSERT INTO `productcatalog` VALUES (28, 'JPMorgan', 700, NULL, 'imagesNew/28.jpeg', 'Stocks', 10, 15, 'Investments', NULL);
 INSERT INTO `productcatalog` VALUES (29, 'Bitcoin', 899.99, NULL, 'imagesNew/29.jpg', 'Cryptocurrency', 10, 15, 'Investments', NULL);
 INSERT INTO `productcatalog` VALUES (30, 'Ethereum\nApple - MacBook Pro - 13\" Display with Touch Bar - Intel Core i5 - 8GB Memory - 256GB SSD - Silver', 1299.99, NULL, 'imagesNew/30.jpg', 'Cryptocurrency', 10, 15, 'Investments', NULL);
 INSERT INTO `productcatalog` VALUES (31, 'BUSD\nApple - MacBook Pro 15.4\" Display with Touch Bar - Intel Core i7 - 16GB Memory - AMD Radeon Pro 555X - 256GB SSD - Space Gray', 2099.99, NULL, 'imagesNew/31.jpg', 'Cryptocurrency', 10, 15, 'Investments', NULL);
@@ -117,6 +117,10 @@ BEGIN;
 INSERT INTO `user` VALUES ('bgeng1@hawk.iit.edu', 'binghan', 'Binghan', 'Geng', 'bgeng1@hawk.iit.edu', '3123949380', 0);
 INSERT INTO `user` VALUES ('bgeng2@hawk.iit.edu', 'binghan', 'Binghan', 'Geng', 'bgeng2@hawk.iit.edu', '3123949380', 1);
 INSERT INTO `user` VALUES ('bgeng3@hawk.iit.edu', 'binghan', 'Binghan', 'Geng', 'bgeng3@hawk.iit.edu', '3123949380', 2);
+
+INSERT INTO `user` VALUES ('yliang41@hawk.iit.edu', 'Yixuan', 'Yixuan', 'Liang', 'yliang41@hawk.iit.edu', '3127927613', 0);
+INSERT INTO `user` VALUES ('yliang42@hawk.iit.edu', 'Yixuan', 'Yixuan', 'Liang', 'yliang42@hawk.iit.edu', '3127927613', 1);
+INSERT INTO `user` VALUES ('yliang43@hawk.iit.edu', 'Yixuan', 'Yixuan', 'Liang', 'yliang43@hawk.iit.edu', '3127927613', 2);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
