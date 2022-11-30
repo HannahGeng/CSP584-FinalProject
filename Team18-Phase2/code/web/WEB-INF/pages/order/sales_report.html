@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>spigot - Free CSS Template by ZyPOP</title>
+    <base th:href="@{/}" href="/bestfinance/"/>
+    <link rel="stylesheet" href="static/css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/mystyle.css" type="text/css" />
+</head>
+
+<body onload="init()">
+<script type="text/javascript" src="static/script/autocomplete.js"></script>
+<!-- Image and text -->
+<div id="header" th:include="header :: header"></div>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+<div id='body'>
+    <section id="content">
+        <center><h2>Sales</h2></center>
+        <table id="example" class="hover" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Total Sale</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:each="sales : ${allSales}">
+                <tr>
+                    <td th:text="${sales.id}">104</td>
+                    <td th:text="${sales.model}">4 Pack - LG Cinema 3D Glasses</td>
+                    <td th:text="@{${'$'+sales.price}}">$35.99</td>
+                    <td th:text="${sales.quantity}">1</td>
+                    <td th:text="@{${'$'+sales.totalsale}}">$35.99</td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+        <center><h2>Bar Chart</h2></center>
+        <div id="barchart_div" style="border:1px solid #CCC"></div>
+        <center><h2>Daily Sales</h2></center>
+        <table id="example2" class="hover" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>No. Item Sold</th>
+                <th>Total Sale</th>
+            </tr>
+            </thead>
+            <tbody>
+                <div th:each="dailySales : ${dailySales}">
+                    <tr>
+                        <td th:text="${dailySales.date}">2022-10-07</td>
+                        <td th:text="${dailySales.quantity}">1</td>
+                        <td th:text="@{${'$'+dailySales.price}}">$35.99</td>
+                    </tr>
+                </div>
+            </tbody>
+        </table>
+    </section>
+    <section id="content">
+        <center><h2>Sales</h2></center>
+        <div id="example_wrapper" class="dataTables_wrapper no-footer">
+            <div class="dataTables_length" id="example_length">
+                <label>Show <select name="example_length" aria-controls="example" class="">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select> entries
+                </label>
+            </div>
+            <div id="example_filter" class="dataTables_filter">
+                <label>Search:<input type="search" class="" placeholder="" aria-controls="example"></label>
+            </div>
+            <div class="dataTables_scroll">
+                <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
+                    <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 901.695px; padding-right: 0px;">
+                        <table class="hover dataTable no-footer" cellspacing="0" width="100%" role="grid" style="margin-left: 0px; width: 901.695px;">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 16.9922px;" aria-sort="ascending" aria-label="ID: activate to sort column descending">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 553.922px;" aria-label="Model: activate to sort column ascending">Product Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 50.9219px;" aria-label="Price: activate to sort column ascending">Price</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 33.9922px;" aria-label="QTY: activate to sort column ascending">QTY</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 65.8672px;" aria-label="Total Sale: activate to sort column ascending">Total Sale</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="dataTables_scrollBody" style="position: relative; overflow: auto; max-height: 200px; width: 100%;">
+                    <table id="example" class="hover" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>QTY</th>
+                            <th>Total Sale</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div th:each="sales : ${allSales}">
+                            <tr>
+                                <td th:text="${sales.id}">104</td>
+                                <td th:text="${sales.model}">4 Pack - LG Cinema 3D Glasses</td>
+                                <td th:text="@{${'$'+sales.price}}">$35.99</td>
+                                <td th:text="${sales.quantity}">1</td>
+                                <td th:text="@{${'$'+sales.totalsale}}">$35.99</td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+<style>
+    .sidebar h4 {
+        padding-bottom: 0;
+        font-size: 18px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 7px 7px;
+        /*background-color: #343a40 !important;*/
+        background-color: darkblue !important;
+        text-align: center;
+        border-radius: 15px;
+    }
+    a {
+        color: #212529;
+        background-color: transparent;
+    }
+    .sidebar ul {
+        width: 250px;
+    }
+    .sidebar li ul li a:active {
+        background-color: #007bff;
+        border-radius: 20px;
+    }
+    .sidebar li ul li a:hover {
+        background-color: lightblue;
+        border-radius: 20px;
+    }
+</style>
+
+<div id="left" th:include="left :: left"></div>
+
+<div id="footer" th:include="footer :: footer"></div>
+
+<script src="static/script/jquery.min.js"></script>
+<script src="static/script/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/script/sales.js"></script>
+<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+</body>
+
+</html>
+

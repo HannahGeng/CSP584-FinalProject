@@ -81,4 +81,8 @@ public class  extends ModelBaseServlet {
             e.printStackTrace();
         }
     }
+
+    public void salesReport(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    }
 }

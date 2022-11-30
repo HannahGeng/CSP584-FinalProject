@@ -9,6 +9,7 @@ public class User implements Serializable{
 	private String lname;
 	private String email;
 	private String mno;
+	private String preference;
 	private int role;
 
 	public static final int CUSTOMER = 0;
@@ -19,7 +20,7 @@ public class User implements Serializable{
 
 	}
 
-	public User(String userid, String password, String fname, String lname, String email, String mno, int role) {
+	public User(String userid, String password, String fname, String lname, String email, String mno, String preference,int role) {
 
 		this.userid = userid;
 		this.password = password;
@@ -27,6 +28,7 @@ public class User implements Serializable{
 		this.lname = lname;
 		this.email = email;
 		this.mno = mno;
+		this.preference = preference;
 		this.role = role;
 	}
 
@@ -76,6 +78,14 @@ public class User implements Serializable{
 
 	public void setMno(String mno) {
 		this.mno = mno;
+	}
+
+	public String getPreference() {
+		return preference;
+	}
+
+	public void setPreference(String preference) {
+		this.preference = preference;
 	}
 
 	public int getRole() {

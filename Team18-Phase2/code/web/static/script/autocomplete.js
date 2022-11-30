@@ -46,12 +46,11 @@ function appendProduct(productName, productId) {
 	cell.className = "popupCell";
 	linkElement = document.createElement("a");
 	linkElement.className = "popupItem";
-	linkElement.setAttribute("href", "/bestfinance/product?method=toViewProductPage&id="
+	linkElement.setAttribute("href", "product?method=toViewProductPage&id="
 			+ productId);
 	linkElement.appendChild(document.createTextNode(productName));
 	cell.appendChild(linkElement);
 }
-
 function parseMessages(responseXML) {
 	
 	if (responseXML == null) {

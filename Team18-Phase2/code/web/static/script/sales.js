@@ -1,9 +1,10 @@
 $(document).ready(
 		function() {
 			$.ajax({
-				url : "SalesChart",
+				url : "sales?method=getSalesChart",
 				dataType : "JSON",
 				success : function(result) {
+					console.log(result);
 					google.charts.load('current', {
 						packages : [ 'corechart' ]
 					});

@@ -13,7 +13,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
 
     @Override
     public void addUser(User user) throws Exception {
-        String sql = "insert into user (userid,password,fname,lname,email,mno,role) values (?,?,?,?,?,?,?)";
-        update(sql,user.getUserid(),user.getPassword(),user.getFname(),user.getLname(),user.getEmail(),user.getMno(),user.getRole());
+        String sql = "insert into user (userid,password,fname,lname,email,mno,preference,role) values (?,?,?,?,?,?,?,?)";
+        update(sql,user.getUserid(),user.getPassword(),user.getFname(),user.getLname(),user.getEmail(),user.getMno(),user.getPreference(),user.getRole());
     }
 }

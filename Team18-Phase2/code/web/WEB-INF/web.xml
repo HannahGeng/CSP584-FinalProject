@@ -16,6 +16,10 @@
     <servlet-class>com.iit.servlet.model.NearByServlet</servlet-class>
 </servlet>
     <servlet>
+        <servlet-name>RecommendServlet</servlet-name>
+        <servlet-class>com.iit.servlet.model.RecommendServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>com.iit.servlet.model.UserServlet</servlet-class>
     </servlet>
@@ -39,6 +43,14 @@
         <servlet-name>AutocompleteServlet</servlet-name>
         <servlet-class>com.iit.servlet.model.AutocompleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Sales</servlet-name>
+        <servlet-class>com.iit.servlet.model.SalesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Sales</servlet-name>
+        <url-pattern>/sales</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AutocompleteServlet</servlet-name>
         <url-pattern>/search</url-pattern>
@@ -70,6 +82,10 @@
     <servlet-mapping>
         <servlet-name>NearByServlet</servlet-name>
         <url-pattern>/near-by</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecommendServlet</servlet-name>
+        <url-pattern>/recommend</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
