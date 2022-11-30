@@ -42,7 +42,7 @@
       <h5>Here's some events selected for you based on your preference: <strong th:text="${session.loginUser.preference}"></strong></h5>
 
           <div class="row row-space" th:each="event : ${recommend}">
-              <div class="col-xs-3 img-block">
+              <div class="col-xs-3 img-block" th:if="${event.getAsJsonObject().has('thumbnail')}">
                   <a href="#"><img th:src="${event.getAsJsonObject().get('thumbnail').getAsString()}" class="img-thumbnail"></a>
               </div>
               <div class="col-xs-6 divide-block">

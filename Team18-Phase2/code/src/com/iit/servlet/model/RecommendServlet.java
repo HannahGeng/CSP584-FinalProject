@@ -24,11 +24,11 @@ public class RecommendServlet extends ModelBaseServlet {
             if (preference.equals("loan")) {
                 Map<String, String> parameter = new HashMap<>();
 
-                parameter.put("api_key", "67de5b0f058fda90127575f55ea23ec65e70e22918b2e0ebc1f44c8951089e49");
+                parameter.put("api_key", "c5eab911d174f59199f88886a36ef4dda4ed473f06b1231180857490f3bbdf10");
                 parameter.put("device", "desktop");
                 parameter.put("engine", "google_events");
                 parameter.put("q", "loan events");
-                parameter.put("htichips", "date:week");
+//                parameter.put("htichips", "date:next month");
 
                 GoogleSearch search = new GoogleSearch(parameter);
 
@@ -43,11 +43,11 @@ public class RecommendServlet extends ModelBaseServlet {
             } else if (preference.equals("insurance")) {
                 Map<String, String> parameter = new HashMap<>();
 
-                parameter.put("api_key", "67de5b0f058fda90127575f55ea23ec65e70e22918b2e0ebc1f44c8951089e49");
+                parameter.put("api_key", "c5eab911d174f59199f88886a36ef4dda4ed473f06b1231180857490f3bbdf10");
                 parameter.put("device", "desktop");
                 parameter.put("engine", "google_events");
                 parameter.put("q", "insurance events");
-                parameter.put("htichips", "date:week");
+//                parameter.put("htichips", "date:next month");
 
                 GoogleSearch search = new GoogleSearch(parameter);
 
@@ -61,11 +61,11 @@ public class RecommendServlet extends ModelBaseServlet {
             }else if (preference.equals("investment")){
                 Map<String, String> parameter = new HashMap<>();
 
-                parameter.put("api_key", "67de5b0f058fda90127575f55ea23ec65e70e22918b2e0ebc1f44c8951089e49");
+                parameter.put("api_key", "c5eab911d174f59199f88886a36ef4dda4ed473f06b1231180857490f3bbdf10");
                 parameter.put("device", "desktop");
                 parameter.put("engine", "google_events");
                 parameter.put("q", "investment events");
-                parameter.put("htichips", "date:week");
+//                parameter.put("htichips", "date:next month");
 
                 GoogleSearch search = new GoogleSearch(parameter);
 
