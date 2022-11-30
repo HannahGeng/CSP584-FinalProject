@@ -35,6 +35,15 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao {
         resultProduct = getBean(Product.class,sql,id);
         return resultProduct;
     }
+    @Override
+    public void insertProduct(Product product) throws Exception {
+        String sql = "insert into `productcatalog` (productid,name," +
+                "price,loanamount,image,manufacturer,rating,quantity,"+
+                "type,creditscore) values (?,?,?,?,?,?,?,?,?,?)";
+        update(sql,product.getProductid(),product.getName(),product.getPrice(),product.getLoanamount(),
+                product.getImage(),product.getManufacturer(),product.getRating(),
+                product.getQuantity(),product.getType(),product.getCreditscore());
+    }
 
     @Override
     public List<Product> selectAccessoryByProductID(Integer productId) throws Exception {
