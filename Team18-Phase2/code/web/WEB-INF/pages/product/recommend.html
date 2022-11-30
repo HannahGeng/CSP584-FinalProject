@@ -10,9 +10,11 @@
   <link rel="stylesheet" href="static/css/mystyle.css" type="text/css" />
 
 </head>
+
 <body>
 <!-- Image and text -->
 <div id="header" th:include="header :: header"></div>
+
 <style>
   * {
     box-sizing: border-box;
@@ -38,24 +40,25 @@
       <h4 class="form-signin-heading"><strong>Please <em><a href="user?method=toLoginPage" >Log in</a></em> to get your customized financial event recommendation</strong></h4>
     </div>
     <div th:if="${session.loginUser != null}">
-      <h4 class="form-signin-heading">Here's some events selected for you based on your preference: <strong th:text="${session.loginUser.preference}"></strong></h4>
+      <h5>Here's some events selected for you based on your preference: <strong th:text="${session.loginUser.preference}"></strong></h5>
 
-    </div>
-      <!--      <form name ='near-by' action='near-by?method=getAddress' method='post'>-->
-<!--        <table align='center'><tr><td>Enter Your Address<input name='address' type='text'></td>-->
-<!--          <td><input type='submit'  value='near-by'></td></tr></table>-->
-<!--      </form>-->
-
-<!--      <div class="row row-space" th:each="near : ${nearlist}">-->
-
-<!--        <h4 class=""><a th:href="${'https://www.google.com/maps/place/'+near.vicinity}" target="_blank" th:text="${near.name}"></a></h4><br>-->
-<!--        <label class="control-label space">Address: </label>-->
-<!--        <label class="info-label"  th:text="${near.vicinity}"></label></a>-->
-<!--        <br>-->
-<!--        <label class="control-label space">Rating: </label>-->
-<!--        <label class="info-label"  th:text="${near.rating}"></label><br>-->
-
-<!--      </div>-->
+          <div class="row row-space" th:each="event : ${recommend}">
+              <div class="col-xs-3 img-block">
+                  <a href="#"><img th:src="${event.getAsJsonObject().get('thumbnail').getAsString()}" class="img-thumbnail"></a>
+              </div>
+              <div class="col-xs-6 divide-block">
+                  <h6><a th:href="${event.getAsJsonObject().get('link').getAsString()}" target="_blank" th:text="${event.getAsJsonObject().get('title').getAsString()}">Happy Money</a></h6>
+                  <label class="control-label space">Time: </label>
+                  <label class="info-label" th:text="${event.getAsJsonObject().getAsJsonObject('date').get('start_date').getAsString()
+                  +' '+event.getAsJsonObject().getAsJsonObject('date').get('when').getAsString()}">4.5/5</label>
+                  <br>
+                  <label class="control-label space">Address: </label>
+                  <label class="info-label" th:text="${event.getAsJsonObject().getAsJsonArray('address').get(0).getAsString()
+                  +', '+event.getAsJsonObject().getAsJsonArray('address').get(1).getAsString()}">$5,000-$100,000</label>
+                  <br>
+              </div>
+          </div>
+      <hr class="draw-line">
   </section>
 </div>
 
@@ -107,7 +110,6 @@
   });
 
 </script>
-
 
 
 </body>
