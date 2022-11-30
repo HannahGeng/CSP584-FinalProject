@@ -12,10 +12,6 @@ public class User implements Serializable{
 	private String preference;
 	private int role;
 
-	public static final int CUSTOMER = 0;
-	public static final int STORE_MANAGER = 1;
-	public static final int SALESMAN = 2;
-
 	public User() {
 
 	}
