@@ -4,7 +4,7 @@ $(document).ready(
 				url : "sales?method=getSalesChart",
 				dataType : "JSON",
 				success : function(result) {
-					console.log("sales chart");
+					console.log(result);
 					google.charts.load('current', {
 						packages : [ 'corechart' ]
 					});
