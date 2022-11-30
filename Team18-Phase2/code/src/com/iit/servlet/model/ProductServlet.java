@@ -91,6 +91,12 @@ public class ProductServlet extends ModelBaseServlet {
             e.printStackTrace();
         }
     }
+
+    public void toAddProductPage(HttpServletRequest request,HttpServletResponse response) throws IOException {
+
+        processTemplate("product/addproduct",request,response);
+    }
+
     public void addProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
 
