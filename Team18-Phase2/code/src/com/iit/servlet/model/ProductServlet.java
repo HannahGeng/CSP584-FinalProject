@@ -15,16 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
-import com.iit.bean.*;
-
-import org.apache.commons.beanutils.BeanUtils;
-
 import javax.servlet.http.HttpSession;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 public class ProductServlet extends ModelBaseServlet {
     MongoDBDataStoreUtilities mdsu;
@@ -93,7 +84,6 @@ public class ProductServlet extends ModelBaseServlet {
     }
 
     public void toAddProductPage(HttpServletRequest request,HttpServletResponse response) throws IOException {
-
         processTemplate("product/addproduct",request,response);
     }
 
@@ -104,13 +94,14 @@ public class ProductServlet extends ModelBaseServlet {
         String name = request.getParameter("productName");
         Double price = Double.parseDouble(request.getParameter("price"));
         String image = request.getParameter("image");
+        String img = "imagesNew/"+image;
         String manufacturer = request.getParameter("manufacturer");
         Double rating = Double.parseDouble(request.getParameter("rating"));
         String creditscore = request.getParameter("creditscore");
         Double loanamount = Double.parseDouble(request.getParameter("loanamount"));
         Integer quantity = Integer.parseInt(request.getParameter("quantity"));
         String type = request.getParameter("type");
-        Product product= new Product(productId,name,price,image,manufacturer,creditscore,loanamount,rating,quantity,type);
+        Product product= new Product(productId,name,price,img,manufacturer,creditscore,loanamount,rating,quantity,type);
         try {
             productService.saveProduct(product);
             processTemplate("product/add_product_success",request,response);
@@ -130,6 +121,7 @@ public class ProductServlet extends ModelBaseServlet {
             e.printStackTrace();
         }
     }
+
     private void storeDataToMongoDB(HttpServletRequest request, HttpServletResponse response,
                                     Integer productId) {
         Product product;
