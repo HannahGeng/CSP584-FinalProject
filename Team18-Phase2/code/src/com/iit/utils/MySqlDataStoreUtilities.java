@@ -1,7 +1,5 @@
 package com.iit.utils;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
-import com.iit.bean.Product;
-
 import javax.sql.DataSource;
 import java.io.InputStream;
 import java.sql.Connection;

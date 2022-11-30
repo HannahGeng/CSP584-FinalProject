@@ -11,10 +11,6 @@ public class ProductServiceImpl implements ProductService {
 
     ProductDao productDao = new ProductDaoImpl();
     @Override
-    public void saveProduct(Product product) throws Exception{
-        productDao.insertProduct(product);
-    }
-    @Override
     public List<Product> filterByType(String type) throws Exception {
         return productDao.selectProductByType(type);
     }
