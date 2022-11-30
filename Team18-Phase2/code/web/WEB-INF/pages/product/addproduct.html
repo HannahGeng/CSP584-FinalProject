@@ -47,23 +47,13 @@
                         <input name="productName" type="text" id="productName" class="form-control" placeholder="Model Name" required="">
                         <label for="price" class="sr-only">Price</label>
                         <input name="price" type="text" id="price" class="form-control" placeholder="Price" required="">
-                        <label for="image" class="sr-only">Image</label>Image:&nbsp;
-                        <input name="image" type="text" id="image" class="form-control" required="">
-                        <label for="manufacturer" class="sr-only">Manufacturer</label>
-                        <input name="manufacturer" type="text" id="manufacturer" class="form-control" placeholder="Manufactured By" required="">
-                        <label for="creditscore" class="sr-only">creditscore</label>
-                        <input name="creditscore" type="text" id="creditscore" class="form-control" placeholder="Condition" required="">
-                        <label for="loanamount" class="sr-only">loanamount</label>
-                        <input name="loanamount" type="text" id="loanamount" class="form-control" placeholder="Discount" required="">
-                        <label for="rating" class="sr-only">Quantity</label>
-                        <input name="rating" type="text" id="rating" class="form-control" placeholder="Quantity" required="">
-                        <label for="quantity" class="sr-only">Quantity</label>
-                        <input name="quantity" type="text" id="quantity" class="form-control" placeholder="Quantity" required="">
+                        <label for="image" class="sr-only">Price</label>
+                        <input name="image" type="text" id="image" class="form-control" placeholder="Image" required="">
                         <div class="form-group">
-                            <label for="type" class="sr-only">Role</label>
+                            <label for="type" class="sr-only">manufacturer</label>
                             <div class="col-xs-5 selectContainer">
-                                <select class="form-control" name="type" id="type">
-                                    <option value="">Choose a type</option>
+                                <select class="form-control" name="manufacturer" id="type">
+                                    <option value="">Choose a manufacturer</option>
                                     <option value="PersonalLoans">Personal Loans</option>
                                     <option value="BussinessLoans">Business Loans</option>
                                     <option value="StudentLoans">Student Loans</option>
@@ -71,6 +61,27 @@
                                     <option value="HealthInsurance">Health Insurance</option>
                                     <option value="Stocks">Stocks</option>
                                     <option value="Cryptocurrency">Cryptocurrency</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <label for="creditscore" class="sr-only">creditscore</label>
+                        <input name="creditscore" type="text" id="creditscore" class="form-control" placeholder="creditscore" required="">
+                        <label for="loanamount" class="sr-only">loanamount</label>
+                        <input name="loanamount" type="text" id="loanamount" class="form-control" placeholder="loanamount" required="">
+                        <label for="rating" class="sr-only">Quantity</label>
+                        <input name="rating" type="text" id="rating" class="form-control" placeholder="rating" required="">
+                        <label for="quantity" class="sr-only">Quantity</label>
+                        <input name="quantity" type="text" id="quantity" class="form-control" placeholder="Quantity" required="">
+                        <div class="form-group">
+                            <label for="type" class="sr-only">Role</label>
+                            <div class="col-xs-5 selectContainer">
+                                <select class="form-control" name="type" id="type">
+                                    <option value="">Choose a type</option>
+                                    <option value="Loans">Loans</option>
+                                    <option value="Investments">Investments</option>
+                                    <option value="Insurances">Insurances</option>
+
                                 </select>
                             </div>
                         </div>

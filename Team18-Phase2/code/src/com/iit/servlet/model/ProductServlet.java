@@ -113,8 +113,11 @@ public class ProductServlet extends ModelBaseServlet {
         Product product= new Product(productId,name,price,image,manufacturer,creditscore,loanamount,rating,quantity,type);
         try {
             productService.saveProduct(product);
+            processTemplate("product/add_product_success",request,response);
         } catch (Exception e) {
             e.printStackTrace();
+            request.setAttribute("errorMessage","add product failed,"+e.getMessage());
+            processTemplate("product/addproduct",request,response);
         }
     }
 
