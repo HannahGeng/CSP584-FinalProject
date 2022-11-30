@@ -1,7 +1,10 @@
 package com.iit.servlet.model;
 
+import com.iit.bean.Product;
 import com.iit.bean.User;
 import com.iit.constant.StoreConstants;
+import com.iit.dao.UserDao;
+import com.iit.dao.impl.UserDaoImpl;
 import com.iit.service.UserService;
 import com.iit.service.impl.UserServiceImpl;
 import com.iit.servlet.base.ModelBaseServlet;
@@ -44,6 +47,18 @@ public class UserServlet extends ModelBaseServlet {
         processTemplate("user/regist", request, response);
     }
 
+    public void toEditUserPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String uid = request.getParameter("id");
+        UserDao userDao = new UserDaoImpl();
+        try {
+            User user = userDao.findByUsername(uid);
+            request.setAttribute("user",user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        processTemplate("user/edit_user", request, response);
+    }
+
     public void doRegister(HttpServletRequest request, HttpServletResponse response) throws Exception {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
@@ -55,6 +70,20 @@ public class UserServlet extends ModelBaseServlet {
             e.printStackTrace();
             request.setAttribute("errorMessage","register failed,"+e.getMessage());
             processTemplate("user/regist",request,response);
+        }
+
+    }
+
+    public void doUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        UserDao userDao = new UserDaoImpl();
+        try {
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            User user = new User();
+            BeanUtils.populate(user, parameterMap);
+            userDao.updateUser(user);
+            response.sendRedirect(request.getContextPath()+"/user?method=toEditUserPage&id="+user.getUserid());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

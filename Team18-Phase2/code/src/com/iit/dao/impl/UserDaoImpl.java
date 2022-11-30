@@ -16,4 +16,10 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
         String sql = "insert into user (userid,password,fname,lname,email,mno,preference,role) values (?,?,?,?,?,?,?,?)";
         update(sql,user.getUserid(),user.getPassword(),user.getFname(),user.getLname(),user.getEmail(),user.getMno(),user.getPreference(),user.getRole());
     }
+
+    @Override
+    public void updateUser(User user) throws Exception {
+        String sql = "update user set password=?,fname=?,lname=?,email=?,mno=?,preference=? where userid=?";
+        update(sql,user.getPassword(),user.getFname(),user.getLname(),user.getEmail(),user.getMno(),user.getPreference(),user.getUserid());
+    }
 }

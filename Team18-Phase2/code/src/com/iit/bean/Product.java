@@ -112,16 +112,4 @@ public class Product implements Serializable {
         this.type = type;
     }
 
-    public void updateProduct(Product updateProduct) {
-        this.name = updateProduct.name;
-        this.price = updateProduct.price;
-        this.image = updateProduct.image;
-        this.manufacturer = updateProduct.manufacturer;
-        this.loanamount = updateProduct.loanamount;
-        this.rating = updateProduct.rating;
-        this.creditscore = updateProduct.creditscore;
-        this.quantity = updateProduct.quantity;
-        this.type = updateProduct.type;
-    }
-
 }

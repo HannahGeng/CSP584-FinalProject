@@ -21,4 +21,6 @@ public interface ProductDao {
     LinkedHashMap<String, Integer> getMostSelled();
 
     LinkedHashMap<String, Integer> getTopZip();
+
+    void updateProduct(Product product) throws Exception;
 }

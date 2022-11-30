@@ -60,7 +60,7 @@
             </div>
         </div>
         <a href="cart?method=toCartPage" class="nav-item nav-link active">Apply<sub th:if="${session.cart != null}" th:text="${session.cart.totalCount}">(3)</sub></a>
-        <span class="nav-greeting-dark">Hi <b th:text="${session.loginUser.fname}">There</b> Welcome.</span>
+        <a th:href="@{/user(method='toEditUserPage',id=${session.loginUser.userid})}"><span class="nav-greeting-dark">Hi <b th:text="${session.loginUser.fname}">There</b> Welcome.</span></a>
         <a class='btn btn-outline-dark my-2 my-sm-2 pull-right' href='user?method=logout'
            role='button'>Sign out</a>
     </nav>
