@@ -1,10 +1,10 @@
 $(document).ready(
 		function() {
-			console.log("sales chart");
 			$.ajax({
 				url : "sales?method=getSalesChart",
 				dataType : "JSON",
 				success : function(result) {
+					console.log(result);
 					google.charts.load('current', {
 						packages : [ 'corechart' ]
 					});

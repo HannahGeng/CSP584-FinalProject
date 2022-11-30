@@ -6,6 +6,8 @@ import com.iit.service.ProductService;
 import com.iit.service.impl.ProductServiceImpl;
 import com.iit.servlet.base.ModelBaseServlet;
 import com.iit.utils.MongoDBDataStoreUtilities;
+import com.iit.utils.MySqlDataStoreUtilities;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -14,8 +16,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import com.iit.bean.*;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+import javax.servlet.http.HttpSession;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 public class ProductServlet extends ModelBaseServlet {
     MongoDBDataStoreUtilities mdsu;
+    MySqlDataStoreUtilities msql;
     ProductService productService = new ProductServiceImpl();
     public void showProductList(HttpServletRequest request,HttpServletResponse response) {
         String type = request.getParameter("type");
@@ -79,6 +92,44 @@ public class ProductServlet extends ModelBaseServlet {
         }
     }
 
+    public void toAddProductPage(HttpServletRequest request,HttpServletResponse response) throws IOException {
+
+        processTemplate("product/addproduct",request,response);
+    }
+
+    public void addProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+
+        Integer productId = Integer.parseInt(request.getParameter("productId"));
+        String name = request.getParameter("productName");
+        Double price = Double.parseDouble(request.getParameter("price"));
+        String image = request.getParameter("image");
+        String manufacturer = request.getParameter("manufacturer");
+        Double rating = Double.parseDouble(request.getParameter("rating"));
+        String creditscore = request.getParameter("creditscore");
+        Double loanamount = Double.parseDouble(request.getParameter("loanamount"));
+        Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+        String type = request.getParameter("type");
+        Product product= new Product(productId,name,price,image,manufacturer,creditscore,loanamount,rating,quantity,type);
+        try {
+            productService.saveProduct(product);
+            processTemplate("product/add_product_success",request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errorMessage","add product failed,"+e.getMessage());
+            processTemplate("product/addproduct",request,response);
+        }
+    }
+
+    private void storeDataToMysql(HttpServletRequest request, HttpServletResponse response,
+                                    Integer productId,String name, Double price,String image,Double loanamount,String manufacturer,Double rating,int quantity,String type,String creditscore) {
+        Product product= new Product(productId,name,price,image,manufacturer,creditscore,loanamount,rating,quantity,type);
+        try {
+            productService.saveProduct(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     private void storeDataToMongoDB(HttpServletRequest request, HttpServletResponse response,
                                     Integer productId) {
         Product product;

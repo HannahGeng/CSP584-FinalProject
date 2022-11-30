@@ -70,7 +70,7 @@ public class MySqlDataStoreUtilities {
         ArrayList<Sales> sales = new ArrayList<Sales>();
         try {
             Connection con = getConnection();
-            String SQL = "select c.ordername ,p.model, p.price,p.price * sum(c.orderquantity) as totalsale, sum(c.orderquantity),p.ptype from customerorders as c Join productcatalog as p on c.ordername = p.productid group by c.ordername";
+            String SQL = "select c.productid ,p.name, p.price,p.price * sum(c.orderquantity) as totalsale, sum(c.orderquantity),p.type from `order` as c Join productcatalog as p on c.productid = p.productid group by c.productname";
             ResultSet rs = con.prepareStatement(SQL).executeQuery();
             // System.out.println(rs);
             Sales s = null;
@@ -97,7 +97,7 @@ public class MySqlDataStoreUtilities {
         ArrayList<DailySale> sale = new ArrayList<DailySale>();
         try {
             Connection con = getConnection();
-            String SQL = "select DATE(DATE_SUB(c.deliverydate, Interval 15 day)),sum(c.orderquantity) , sum(c.orderquantity * p.price) from customerorders as c Join productcatalog as p on c.ordername = p.productid   group by DATE(DATE_SUB(c.deliverydate, Interval 15 day)) order by DATE(DATE_SUB(c.deliverydate, Interval 15 day)) ASC";
+            String SQL = "select DATE(DATE_SUB(c.createtime, Interval 15 day)),sum(c.orderquantity) , sum(c.orderquantity * p.price) from `order` as c Join productcatalog as p on c.productid = p.productid group by DATE(DATE_SUB(c.createtime, Interval 15 day)) order by DATE(DATE_SUB(c.createtime, Interval 15 day)) ASC";
             ResultSet rs = con.prepareStatement(SQL).executeQuery();
             DailySale ds = null;
             while (rs.next()) {
