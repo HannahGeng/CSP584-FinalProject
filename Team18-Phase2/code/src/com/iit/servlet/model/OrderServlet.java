@@ -17,7 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class  extends ModelBaseServlet {
+public class OrderServlet  extends ModelBaseServlet {
 
     OrderService orderService = new OrderServiceImpl();
 
