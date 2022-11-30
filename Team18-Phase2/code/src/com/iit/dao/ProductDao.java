@@ -1,5 +1,6 @@
 package com.iit.dao;
 
+import com.iit.bean.Order;
 import com.iit.bean.Product;
 
 import java.sql.SQLException;
@@ -7,6 +8,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public interface ProductDao {
+
+    void insertProduct(Product product) throws Exception;
     List<Product> selectProductByType(String type) throws SQLException;
 
     List<Product> selectProductByManufacturer(String type, String manufacturer) throws SQLException;
