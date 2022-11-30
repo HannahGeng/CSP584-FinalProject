@@ -15,16 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
-import com.iit.bean.*;
-
-import org.apache.commons.beanutils.BeanUtils;
-
 import javax.servlet.http.HttpSession;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 public class ProductServlet extends ModelBaseServlet {
     MongoDBDataStoreUtilities mdsu;
@@ -119,6 +110,17 @@ public class ProductServlet extends ModelBaseServlet {
             request.setAttribute("errorMessage","add product failed,"+e.getMessage());
             processTemplate("product/addproduct",request,response);
         }
+    }
+
+    public void toEditProductPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int productID = Integer.parseInt(request.getParameter("id"));
+        try {
+            Product product = productService.filterById(productID);
+            request.setAttribute("product",product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        processTemplate("product/editproduct",request,response);
     }
 
     private void storeDataToMysql(HttpServletRequest request, HttpServletResponse response,

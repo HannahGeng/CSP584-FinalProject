@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>spigot - Free CSS Template by ZyPOP</title>
+    <title>Best Finance</title>
     <base th:href="@{/}" href="/bestfinance/"/>
     <link rel="stylesheet" href="static/css/styles.css" type="text/css" />
     <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css" />
@@ -60,10 +60,29 @@
                 <form action="cart?method=addToCart" method="post">
                     <table>
                         <tr>
-                            <td>
-                                <input type="hidden" name="productid" th:value="${product.productid}">
-                                <button class="btn btn-outline-dark" type="submit">Apply</button>
-                            </td>
+                            <div th:if="${session.loginUser == null}">
+                                <td>
+                                    <input type="hidden" name="productid" th:value="${product.productid}">
+                                    <button class="btn btn-outline-dark" type="submit">Apply</button>
+                                </td>
+                            </div>
+                            <div th:unless="${session.loginUser == null}">
+                                <div th:switch="${session.loginUser.role}">
+                                    <div th:case=0>
+                                        <td>
+                                            <input type="hidden" name="productid" th:value="${product.productid}">
+                                            <button class="btn btn-outline-dark" type="submit">Apply</button>
+                                        </td>
+                                    </div>
+                                    <div th:case=1>
+                                        <td>
+                                            <input type="hidden" name="productid" th:value="${product.productid}">
+                                            <button class="btn btn-outline-dark" type="submit">Apply</button>
+                                            <a class='btn btn-link' role='button' th:href="@{/product(method='toEditProductPage',id=${product.productid})}">Edit</a>
+                                        </td>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                         <tr>
                             <td>

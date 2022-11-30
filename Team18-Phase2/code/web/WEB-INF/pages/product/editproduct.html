@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>spigot - Free CSS Template by ZyPOP</title>
+    <title>Best Finance</title>
     <base th:href="@{/}" href="/bestfinance/"/>
     <link rel="stylesheet" href="static/css/styles.css" type="text/css" />
     <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css" />
@@ -32,17 +32,58 @@
         display: table;
     }
 </style>
-<div id='body'>
-    <section id='content'>
+<div id="body">
+    <section id="content">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <div class="container">
-                    <form class="form-signin" method="post" action="order?method=toOrderdetailPage">
-                        <center><h2 class="form-signin-heading">View Product</h2></center>
-                        <label for="productid" class="sr-only">Product ID</label>
-                        <input name="productid" type="text" id="productid" class="form-control" placeholder="Product ID" required="" autofocus="">
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">View</button>
+                <div class="container text-center">
+                    <form class="form-signin" method="post" action="product?method=updateProduct">
+                        <center><h2 class="form-signin-heading">Update Product</h2></center>
+                        <label for="productId" class="sr-only">Product Id</label>
+                        <input name="productId" th:value="${product.productid}" disabled type="text" id="productId" class="form-control" placeholder="productId" required="" autofocus="">
+                        <label for="productName" class="sr-only">Product Name</label>
+                        <input th:value="${product.name}" name="productName" type="text" id="productName" class="form-control" placeholder="Model Name" required="">
+                        <label for="price" class="sr-only">Price</label>
+                        <input th:value="${product.price}" name="price" type="text" id="price" class="form-control" placeholder="Price" required="">
+                        <label for="image" class="sr-only">Price</label>
+                        <input th:value="${product.image}" name="image" type="text" id="image" class="form-control" placeholder="Image" required="">
+                        <div class="form-group">
+                            <label for="type" class="sr-only">manufacturer</label>
+                            <div class="col-xs-5 selectContainer">
+                                <select class="form-control" name="manufacturer" id="manufacturer">
+                                    <option th:text="${product.manufacturer}">Choose a type</option>
+                                    i                                    <option value="PersonalLoans">Personal Loans</option>
+                                    <option value="BussinessLoans">Business Loans</option>
+                                    <option value="StudentLoans">Student Loans</option>
+                                    <option value="LifeInsurance">Life Insurance</option>
+                                    <option value="HealthInsurance">Health Insurance</option>
+                                    <option value="Stocks">Stocks</option>
+                                    <option value="Cryptocurrency">Cryptocurrency</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label for="creditscore" class="sr-only">creditscore</label>
+                        <input th:value="${product.creditscore}" name="creditscore" type="text" id="creditscore" class="form-control" placeholder="creditscore" required="">
+                        <label for="loanamount" class="sr-only">loanamount</label>
+                        <input th:value="${product.loanamount}" name="loanamount" type="text" id="loanamount" class="form-control" placeholder="loanamount" required="">
+                        <label for="rating" class="sr-only">Quantity</label>
+                        <input th:value="${product.rating}" name="rating" type="text" id="rating" class="form-control" placeholder="rating" required="">
+                        <label for="quantity" class="sr-only">Quantity</label>
+                        <input th:value="${product.quantity}" name="quantity" type="text" id="quantity" class="form-control" placeholder="Quantity" required="">
+                        <div class="form-group">
+                            <label for="type" class="sr-only">Type</label>
+                            <div class="col-xs-5 selectContainer">
+                                <select class="form-control" name="type" id="type">
+                                    <option th:text="${product.type}">Choose a type</option>
+                                    <option value="Loans">Loans</option>
+                                    <option value="Investments">Investments</option>
+                                    <option value="Insurances">Insurances</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class='btn btn-lg btn-outline-dark' type='submit'>Update Product</button>
+                        <a class='btn btn-lg btn-outline-dark' role='button' th:href="@{/product(method='deleteProduct',id=${product.productid})}">Delete Product</a>
                     </form>
                 </div>
             </div>
