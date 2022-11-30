@@ -40,16 +40,16 @@
                 <div class="container text-center">
                     <form class="form-signin" method="post" action="product?method=updateProduct">
                         <center><h2 class="form-signin-heading">Update Product</h2></center>
-                        <label for="productId" class="sr-only">Product Id</label>
+                        <label for="productId" class="dark">Product Id</label>
                         <input name="productId" th:value="${product.productid}" disabled type="text" id="productId" class="form-control" placeholder="productId" required="" autofocus="">
-                        <label for="productName" class="sr-only">Product Name</label>
+                        <label for="productName" class="dark">Product Name</label>
                         <input th:value="${product.name}" name="productName" type="text" id="productName" class="form-control" placeholder="Model Name" required="">
-                        <label for="price" class="sr-only">Price</label>
+                        <label for="price" class="dark">Price</label>
                         <input th:value="${product.price}" name="price" type="text" id="price" class="form-control" placeholder="Price" required="">
-                        <label for="image" class="sr-only">Price</label>
+                        <label for="image" class="dark">Price</label>
                         <input th:value="${product.image}" name="image" type="text" id="image" class="form-control" placeholder="Image" required="">
                         <div class="form-group">
-                            <label for="type" class="sr-only">manufacturer</label>
+                            <label for="type" class="dark">manufacturer</label>
                             <div class="col-xs-5 selectContainer">
                                 <select class="form-control" name="manufacturer" id="manufacturer">
                                     <option th:text="${product.manufacturer}">Choose a type</option>
@@ -63,16 +63,16 @@
                                 </select>
                             </div>
                         </div>
-                        <label for="creditscore" class="sr-only">creditscore</label>
+                        <label for="creditscore" class="dark">creditscore</label>
                         <input th:value="${product.creditscore}" name="creditscore" type="text" id="creditscore" class="form-control" placeholder="creditscore" required="">
-                        <label for="loanamount" class="sr-only">loanamount</label>
+                        <label for="loanamount" class="dark">loanamount</label>
                         <input th:value="${product.loanamount}" name="loanamount" type="text" id="loanamount" class="form-control" placeholder="loanamount" required="">
-                        <label for="rating" class="sr-only">Quantity</label>
+                        <label for="rating" class="dark">Quantity</label>
                         <input th:value="${product.rating}" name="rating" type="text" id="rating" class="form-control" placeholder="rating" required="">
-                        <label for="quantity" class="sr-only">Quantity</label>
+                        <label for="quantity" class="dark">Quantity</label>
                         <input th:value="${product.quantity}" name="quantity" type="text" id="quantity" class="form-control" placeholder="Quantity" required="">
                         <div class="form-group">
-                            <label for="type" class="sr-only">Type</label>
+                            <label for="type" class="dark">Type</label>
                             <div class="col-xs-5 selectContainer">
                                 <select class="form-control" name="type" id="type">
                                     <option th:text="${product.type}">Choose a type</option>
