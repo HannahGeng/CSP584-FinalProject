@@ -1,7 +1,7 @@
 package com.iit.servlet.model;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.google.gson.JsonObject;
 import com.iit.bean.User;
 import com.iit.constant.StoreConstants;

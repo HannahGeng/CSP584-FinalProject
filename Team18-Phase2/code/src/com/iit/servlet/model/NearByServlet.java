@@ -21,7 +21,7 @@ public class NearByServlet extends ModelBaseServlet {
     }
 
 
-    GeocodingApiRequest geocodingApiRequest;
+
     public void getAddress (HttpServletRequest request, HttpServletResponse response) throws IOException, InterruptedException, ApiException {
         String address = request.getParameter("address");
 

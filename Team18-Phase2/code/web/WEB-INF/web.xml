@@ -20,6 +20,10 @@
         <servlet-class>com.iit.servlet.model.RecommendServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>KnowledgeGraphServlet</servlet-name>
+        <servlet-class>com.iit.servlet.model.KnowledgeGraphServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>com.iit.servlet.model.UserServlet</servlet-class>
     </servlet>
@@ -86,6 +90,10 @@
     <servlet-mapping>
         <servlet-name>RecommendServlet</servlet-name>
         <url-pattern>/recommend</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KnowledgeGraphServlet</servlet-name>
+        <url-pattern>/kg</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>

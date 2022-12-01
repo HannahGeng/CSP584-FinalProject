@@ -91,6 +91,10 @@
                         </tr>
                     </table>
                 </form>
+                <form action="kg?method=getKGData" method="post">
+<!--                    <input type="hidden" name="productid" th:value="${product.productid}">-->
+                    <button class="btn btn-outline-dark" type="submit" name="product" th:value="${product.name}">Related Information</button>
+                </form>
             </div>
         </div>
         <hr class="draw-line">
